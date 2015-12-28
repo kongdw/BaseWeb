@@ -2,21 +2,32 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="k0n9.module.sys.dao.UserMapper">
 
-	<cache/>
+    <cache/>
 
-	<select id="fetch" resultType="User">
-		select id, username, email from user where id = #{id}
+    <select id="fetch" resultType="User">
+		select ID,
+            USERNAME,
+            EMAIL,
+            PHONE_NUMBER,
+            PASSWORD,
+            SALT,
+            CREATE_DATE,
+            STATUS,
+            DELETED,
+            IS_ADMIN
+            from SYS_USER
+            where id = #{id}
 	</select>
 
-	<select id="findByList" resultType="User">
+    <select id="findByList" resultType="User">
 		select id, username,password,email,qq,phone from user order by id
 	</select>
 
-	<insert id="insert" parameterType="User" useGeneratedKeys="true" keyProperty="id">
+    <insert id="insert" parameterType="User" useGeneratedKeys="true" keyProperty="id">
 		insert into user (username,password,email,qq,phone) values (#{username},#{password},#{email},#{qq},#{phone})
 	</insert>
 
-	<insert id="update" parameterType="User">
+    <insert id="update" parameterType="User">
 		update user set username=#{username}, email=#{email} where id = #{id}
 	</insert>
 

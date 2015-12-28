@@ -40,7 +40,7 @@ public class HsqlDbSetupServlet extends HttpServlet {
 	private void populateData(final ScriptRunner scriptRunner) throws IOException {
 		Reader dataloadReader = null;
 		try {
-			dataloadReader = Resources.getResourceAsReader("k0n9/database/dataload.sql");
+			dataloadReader = Resources.getResourceAsReader("k0n9/database/H2-dataload.sql");
 			scriptRunner.runScript(dataloadReader);
 		} finally {
 			IOUtils.closeQuietly(dataloadReader);
@@ -50,7 +50,7 @@ public class HsqlDbSetupServlet extends HttpServlet {
 	private void buildSchema(final ScriptRunner scriptRunner) throws IOException {
 		Reader schemaReader = null;
 		try {
-			schemaReader = Resources.getResourceAsReader("k0n9/database/schema.sql");
+			schemaReader = Resources.getResourceAsReader("k0n9/database/H2-schema.sql");
 			scriptRunner.runScript(schemaReader);
 		} finally {
 			IOUtils.closeQuietly(schemaReader);
