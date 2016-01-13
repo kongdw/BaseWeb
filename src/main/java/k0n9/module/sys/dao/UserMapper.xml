@@ -4,31 +4,47 @@
 
     <cache/>
 
+    <sql id="userColumns">
+        ID,USERNAME,EMAIL,PHONE_NUMBER,PASSWORD,SALT,
+        CREATE_DATE,STATUS,DELETED,IS_ADMIN
+    </sql>
+
     <select id="fetch" resultType="User">
-		select ID,
-            USERNAME,
-            EMAIL,
-            PHONE_NUMBER,
-            PASSWORD,
-            SALT,
-            CREATE_DATE,
-            STATUS,
-            DELETED,
-            IS_ADMIN
-            from SYS_USER
-            where id = #{id}
-	</select>
+        select
+        <include refid="userColumns"/>
+        from SYS_USER
+        where id = #{id}
+    </select>
 
-    <select id="findByList" resultType="User">
-		select id, username,password,email,qq,phone from user order by id
-	</select>
+    <select id="findList" resultType="User">
+        select
+        <include refid="userColumns"/>
+        from SYS_USER
+        order by id DESC
+    </select>
 
-    <insert id="insert" parameterType="User" useGeneratedKeys="true" keyProperty="id">
-		insert into user (username,password,email,qq,phone) values (#{username},#{password},#{email},#{qq},#{phone})
+    <select id="findPage" resultType="User">
+        select
+        <include refid="userColumns"/>
+        from SYS_USER
+        order by id DESC
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+		insert into SYS_USER (
+            USERNAME,PASSWORD,EMAIL,PHONE_NUMBER,SALT,CREATE_DATE,
+            STATUS,DELETED,IS_ADMIN
+		) values (
+		  #{username},#{password},#{email},#{phoneNumber},#{salt},#{createDate},
+		  #{status},#{deleted},#{isAdmin}
+		)
 	</insert>
 
-    <insert id="update" parameterType="User">
-		update user set username=#{username}, email=#{email} where id = #{id}
-	</insert>
+    <update id="update">
+		update SYS_USER set
+		  username=#{username},
+		  email=#{email}
+		  where id = #{id}
+	</update>
 
 </mapper>

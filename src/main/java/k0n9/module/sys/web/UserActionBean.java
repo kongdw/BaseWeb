@@ -1,6 +1,7 @@
 package k0n9.module.sys.web;
 
 import com.google.inject.Inject;
+import k0n9.comm.service.BaseService;
 import k0n9.comm.stripes.JsonResolution;
 import k0n9.comm.web.BaseAction;
 import k0n9.module.sys.entity.User;
@@ -19,7 +20,7 @@ import java.util.List;
  * @version 1.0
  */
 @UrlBinding("/user")
-public class UserActionBean extends BaseAction {
+public class UserActionBean extends BaseAction<User,Long> {
 
     private static final String LIST_FORWARD = "/WEB-INF/jsp/user/list.jsp";
     private static final String FORM_FORWARD = "/WEB-INF/jsp/user/form.jsp";
@@ -28,11 +29,16 @@ public class UserActionBean extends BaseAction {
 
     private List<User> users;
 
+    protected BaseService<User, Long> getEntityService() {
+        return userService;
+    }
+
     @ValidateNestedProperties({
             @Validate(on = "save", field = "username", required = true),
             @Validate(on = "save", field = "password", required = true)
     })
     private User user;
+
 
     @Inject
     public UserActionBean(UserService userService){
@@ -41,13 +47,13 @@ public class UserActionBean extends BaseAction {
 
     @DefaultHandler
     public Resolution list() {
-        users = userService.findByList(new User());
+        users = userService.findPage(new User());
         return new ForwardResolution(LIST_FORWARD);
     }
 
 
     public Resolution ajaxList(){
-        users = userService.findByList(new User());
+        users = userService.findList(new User());
         return new JsonResolution(users);
     }
 

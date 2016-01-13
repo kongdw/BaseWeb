@@ -69,6 +69,7 @@ CREATE UNIQUE INDEX UIDX_sys_role_resource_permission on sys_role_resource_permi
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 --                   权限字典
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+DROP TABLE IF EXISTS sys_permission;
 CREATE TABLE sys_permission (
   id BIGINT NOT NULL AUTO_INCREMENT,
   name varchar(100) DEFAULT NULL,

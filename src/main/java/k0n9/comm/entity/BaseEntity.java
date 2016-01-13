@@ -10,6 +10,7 @@ import java.util.Map;
 
 /**
  * 增加乐观锁支持的实体
+ *
  * @author David Kong
  * @version 1.0
  */
@@ -17,7 +18,9 @@ public abstract class BaseEntity<ID extends Serializable> implements Persistable
 
     private static final long serialVersionUID = 8735316878185564089L;
 
-    /** 当前用户对象sqlMapKey */
+    /**
+     * 当前用户对象sqlMapKey
+     */
     public static final String SQLMAPKEY_CURRENTUSER = "_USER";
 
     /**
@@ -28,15 +31,20 @@ public abstract class BaseEntity<ID extends Serializable> implements Persistable
     public static final String EXTRA_ATTRIBUTE_OPERATION_UPDATE = "update";
     public static final String EXTRA_ATTRIBUTE_OPERATION_REMOVE = "remove";
 
-    /** 自定义sqlMap(sql标识,值对象) */
+    /**
+     * 自定义sqlMap(sql标识,值对象)
+     */
     @JsonIgnore
     protected Map<String, Object> sqlMap;
 
-    /** Entity本身无用，主要用于UI层辅助参数传递 */
+    /**
+     * Entity本身无用，主要用于UI层辅助参数传递
+     */
     private Map<String, Object> extraAttributes;
 
     /**
      * 判断当前业务对象是否新对象
+     *
      * @return
      */
     public boolean isNew() {
@@ -51,7 +59,7 @@ public abstract class BaseEntity<ID extends Serializable> implements Persistable
     }
 
     //TODO protected 属性是否会被忽略?
-    protected String getOperationStatus(){
+    protected String getOperationStatus() {
         if (extraAttributes == null) {
             return null;
         }
@@ -89,11 +97,11 @@ public abstract class BaseEntity<ID extends Serializable> implements Persistable
         this.sqlMap = sqlMap;
     }
 
-    public void addSqlMapAttribute(String key,Object value){
-        if(sqlMap == null){
+    public void addSqlMapAttribute(String key, Object value) {
+        if (sqlMap == null) {
             sqlMap = Maps.newHashMap();
         }
-        sqlMap.put(key,value);
+        sqlMap.put(key, value);
     }
 
     public Map<String, Object> getExtraAttributes() {
@@ -106,6 +114,7 @@ public abstract class BaseEntity<ID extends Serializable> implements Persistable
 
     /**
      * 添加扩展属性用于前台UI显示
+     *
      * @param key
      * @param value
      */

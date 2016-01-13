@@ -5,6 +5,9 @@
 <ul>
   <li><stripes:link beanclass="k0n9.module.sys.web.UserActionBean">users</stripes:link></li>
   <li><stripes:link beanclass="k0n9.module.sys.web.UserActionBean" event="ajaxList">ajax users</stripes:link></li>
+  <li><stripes:link beanclass="k0n9.module.showcase.HelloActionBean">hello</stripes:link> </li>
+  <li><stripes:link beanclass="k0n9.module.showcase.HelloActionBean" event="registerForm">register</stripes:link> </li>
+
 </ul>
 </body>
 </html>

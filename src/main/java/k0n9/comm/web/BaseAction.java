@@ -1,15 +1,21 @@
 package k0n9.comm.web;
 
+import k0n9.comm.entity.plugin.Persistable;
+import k0n9.comm.service.BaseService;
 import net.sourceforge.stripes.action.ActionBean;
 import net.sourceforge.stripes.action.ActionBeanContext;
+
+import java.io.Serializable;
 
 /**
  * @author David Kong
  * @version 1.0
  */
-public class BaseAction implements ActionBean {
+public abstract class BaseAction<T extends Persistable, ID extends Serializable> implements ActionBean {
 
     private ActionBeanContext context;
+
+    abstract protected BaseService<T, ID> getEntityService();
 
     public void setContext(final ActionBeanContext context) {
         this.context = context;
@@ -18,4 +24,6 @@ public class BaseAction implements ActionBean {
     public ActionBeanContext getContext() {
         return context;
     }
+
+
 }

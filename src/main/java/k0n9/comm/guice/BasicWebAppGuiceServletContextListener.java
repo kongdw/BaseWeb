@@ -8,6 +8,7 @@ public class BasicWebAppGuiceServletContextListener extends GuiceServletContextL
 	@Override
 	protected Injector getInjector() {
 		return Guice.createInjector(
+                new ApplicationConfiguration(),
                 new BasicMyBatisModule(),
                 new BasicServletModule()
         );
