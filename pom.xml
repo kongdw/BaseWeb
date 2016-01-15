@@ -2,7 +2,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>k0n9.sys</groupId>
-  <artifactId>BaseWeb</artifactId>
+  <artifactId>k0n9-web</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
   <name>BaseWeb Maven Webapp</name>
@@ -160,7 +160,5 @@
                 </configuration>
             </plugin>
         </plugins>
-
     </build>
-
 </project>

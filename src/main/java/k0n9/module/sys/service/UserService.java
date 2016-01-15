@@ -23,4 +23,5 @@ public class UserService extends BaseService<User,Long> {
     protected BaseMapper<User, Long> getEntityMapper() {
         return userMapper;
     }
+
 }

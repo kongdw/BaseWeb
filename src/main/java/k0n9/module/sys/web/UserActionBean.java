@@ -22,7 +22,7 @@ import java.util.List;
 @UrlBinding("/user")
 public class UserActionBean extends BaseAction<User,Long> {
 
-    private static final String LIST_FORWARD = "/WEB-INF/jsp/user/list.jsp";
+    private static final String LIST_FORWARD = "/WEB-INF/jsp/user/userList.jsp";
     private static final String FORM_FORWARD = "/WEB-INF/jsp/user/form.jsp";
 
     private UserService userService;

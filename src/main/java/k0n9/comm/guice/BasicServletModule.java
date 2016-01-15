@@ -3,6 +3,7 @@ package k0n9.comm.guice;
 import com.google.inject.Singleton;
 import com.google.inject.servlet.ServletModule;
 import k0n9.comm.servlet.HsqlDbSetupServlet;
+import net.sourceforge.stripes.controller.DispatcherServlet;
 import net.sourceforge.stripes.controller.DynamicMappingFilter;
 import net.sourceforge.stripes.controller.StripesFilter;
 
@@ -17,8 +18,8 @@ public class BasicServletModule extends ServletModule {
 		bind(HsqlDbSetupServlet.class).in(Singleton.class);
 		serve("/hidden/setup").with(HsqlDbSetupServlet.class);
 
-		//bind(DispatcherServlet.class).in(Singleton.class);
-		//serve("*.action").with(DispatcherServlet.class);
+		bind(DispatcherServlet.class).in(Singleton.class);
+		serve("*.action").with(DispatcherServlet.class);
 
 		bind(StripesFilter.class).in(Singleton.class);
 		filter("*.jsp").through(StripesFilter.class, new HashMap<String, String>() {
@@ -26,6 +27,7 @@ public class BasicServletModule extends ServletModule {
             {
 				put("ActionResolver.Packages", "k0n9.module.sys.web,k0n9.module.showcase");
 				put("Extension.Packages", "k0n9.module.sys.web.extensions");
+				put("Stripes.EncryptionKey", "kongdewen");
 				put("PopulationStrategy.Class", "net.sourceforge.stripes.tag.BeanFirstPopulationStrategy");
 				put("Configuration.Class", "com.silvermindsoftware.sg.config.GuiceRuntimeConfiguration");
 				put("ActionBeanContextFactory.Class", "com.silvermindsoftware.sg.controller.GuiceActionBeanContextFactory");

@@ -2,6 +2,7 @@ package k0n9.comm.dao;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -43,14 +44,14 @@ public interface BaseMapper<T,ID extends Serializable> {
 
     /**
      * 分页查询
-     * @param entity
+     * @param searchMap 查询条件
      * @return
      */
     List<T> findPage(T entity);
 
     /**
      * 查询所有数据列表
-     * @param entity
+     * @param searchMap 查询条件
      * @return
      */
     List<T> findList(T entity);

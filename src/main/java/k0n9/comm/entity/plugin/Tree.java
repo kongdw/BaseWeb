@@ -3,8 +3,7 @@ package k0n9.comm.entity.plugin;
 import java.io.Serializable;
 
 /**
- *
- * 业务对象实现树接口
+ * 树形接口
  *
  * @author David Kong
  *         date : 2015/11/9
@@ -17,9 +16,9 @@ public interface Tree<ID extends Serializable> {
     String getName();
 
     /**
-     * 显示的图标 大小为16×16
+     * 显示的图标
      *
-     * @return
+     * @return 图标icon
      */
     String getIcon();
 
@@ -28,16 +27,16 @@ public interface Tree<ID extends Serializable> {
     /**
      * 父路径
      *
-     * @return
+     * @return 父节点ID
      */
     ID getParentId();
 
     void setParentId(ID parentId);
 
     /**
-     * 所有父路径 如1,2,3,
+     * 所有父路径
      *
-     * @return
+     * @return 如1, 2, 3,
      */
     String getParentIds();
 
@@ -46,21 +45,14 @@ public interface Tree<ID extends Serializable> {
     /**
      * 获取 parentIds 之间的分隔符
      *
-     * @return
+     * @return 默认","分割
      */
     String getSeparator();
 
     /**
-     * 把自己构造出新的父节点路径
-     *
-     * @return
-     */
-    String makeSelfAsNewParentIds();
-
-    /**
      * 权重 用于排序 越小越排在前边
      *
-     * @return
+     * @return 权重值
      */
     Integer getWeight();
 
@@ -69,38 +61,22 @@ public interface Tree<ID extends Serializable> {
     /**
      * 是否是根节点
      *
-     * @return
+     * @return true:是根节点 false:不是根节点
      */
     boolean isRoot();
 
     /**
      * 是否是叶子节点
      *
-     * @return
+     * @return true:叶子节点 false:不是叶子节点
      */
     boolean isLeaf();
 
     /**
      * 是否有孩子节点
      *
-     * @return
+     * @return true:有子节点 false:没有子节点
      */
     boolean isHasChildren();
-
-    /**
-     * 根节点默认图标 如果没有默认 空即可  大小为16×16
-     */
-    String getRootDefaultIcon();
-
-    /**
-     * 树枝节点默认图标 如果没有默认 空即可  大小为16×16
-     */
-    String getBranchDefaultIcon();
-
-    /**
-     * 树叶节点默认图标 如果没有默认 空即可  大小为16×16
-     */
-    String getLeafDefaultIcon();
-
 
 }
