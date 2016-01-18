@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ include file="/WEB-INF/jsp/common/import-taglib.jspf" %>
+<%@ include file="/WEB-INF/jsp/common/import-taglib.jsp" %>
 <stripes:layout-definition>
   <!DOCTYPE html>
   <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -14,7 +14,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <stripes:layout-component name="css">
-      <%@include file="/WEB-INF/jsp/common/import-css.jspf" %>
+      <%@include file="/WEB-INF/jsp/common/import-css.jsp" %>
     </stripes:layout-component>
     <stripes:layout-component name="css-extend"/>
   </head>
@@ -35,7 +35,7 @@
     2016 &copy; 中公网医疗信息技术有限公司
   </div>
   <stripes:layout-component name="js">
-    <%@include file="/WEB-INF/jsp/common/import-js.jspf" %>
+    <%@include file="/WEB-INF/jsp/common/import-js.jsp" %>
   </stripes:layout-component>
   <stripes:layout-component name="js-extend"/>
   <script>

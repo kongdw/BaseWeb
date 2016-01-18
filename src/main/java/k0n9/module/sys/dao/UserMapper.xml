@@ -2,8 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="k0n9.module.sys.dao.UserMapper">
 
-    <cache/>
-
     <sql id="userColumns">
         ID,USERNAME,EMAIL,PHONE_NUMBER,PASSWORD,SALT,
         CREATE_DATE,STATUS,DELETED,IS_ADMIN
@@ -20,6 +18,7 @@
         select
         <include refid="userColumns"/>
         from SYS_USER
+        where id =#{id}
         order by id DESC
     </select>
 
@@ -27,6 +26,7 @@
         select
         <include refid="userColumns"/>
         from SYS_USER
+        where USERNAME = #{username}
         order by id DESC
     </select>
 

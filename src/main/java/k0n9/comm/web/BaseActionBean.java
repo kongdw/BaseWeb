@@ -11,7 +11,7 @@ import java.io.Serializable;
  * @author David Kong
  * @version 1.0
  */
-public abstract class BaseAction<T extends Persistable, ID extends Serializable> implements ActionBean {
+public abstract class BaseActionBean<T extends Persistable, ID extends Serializable> implements ActionBean {
 
     private ActionBeanContext context;
 

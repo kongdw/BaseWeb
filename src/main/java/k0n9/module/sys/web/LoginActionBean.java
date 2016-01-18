@@ -72,7 +72,7 @@ public class LoginActionBean implements ActionBean {
             if (this.targetUrl != null) {
                 return new RedirectResolution(this.targetUrl);
             }
-            return new RedirectResolution("/main");
+            return new RedirectResolution(MainActionBean.class);
         } else {
             ValidationError error = new SimpleError("用户名或密码不正确.");
             getContext().getValidationErrors().addGlobalError(error);

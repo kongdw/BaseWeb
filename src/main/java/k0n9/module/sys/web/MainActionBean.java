@@ -28,6 +28,6 @@ public class MainActionBean implements ActionBean{
 
     @DefaultHandler
     public Resolution main() {
-        return new ForwardResolution("/WEB-INF/main.jsp");
+        return new ForwardResolution("/main.jsp");
     }
 }

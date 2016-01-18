@@ -2,7 +2,7 @@
 <%@ taglib prefix="stripes" uri="http://stripes.sourceforge.net/stripes.tld" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
-<stripes:useActionBean var="actionBean" beanclass="k0n9.module.sys.web.UserActionBean"/>
+<stripes:useActionBean var="actionBean" beanclass="k0n9.module.sys.web.UserActionBeanBean"/>
 <html>
 <head>
   <title>用户列表</title>

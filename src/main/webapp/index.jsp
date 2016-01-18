@@ -1,14 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ include file="WEB-INF/jsp/common/import-taglib.jspf"%>
-<stripes:layout-render name="WEB-INF/jsp/front/login.jsp">
+<%@ include file="/WEB-INF/jsp/common/import-taglib.jsp"%>
+<stripes:layout-render name="/WEB-INF/jsp/front/login.jsp">
   <stripes:layout-component name="css-extend">
     <link href="${ctx}/assets/plugins/select2/select2.css" rel="stylesheet" type="text/css"/>
     <link href="${ctx}/assets/css/login-soft.css" rel="stylesheet" type="text/css"/>
   </stripes:layout-component>
   <stripes:layout-component name="js-extend">
-    <script src="${ctx}/assets/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
     <script src="${ctx}/assets/plugins/backstretch/jquery.backstretch.min.js" type="text/javascript"></script>
-    <script src="${ctx}/assets/plugins/select2/select2.min.js" type="text/javascript"></script>
+    <script src="${ctx}/assets/js/login-soft.js" type="text/javascript"></script>
   </stripes:layout-component>
   <stripes:layout-component name="content">
     <stripes:form class="login-form" action="${ctx}/login" method="post">

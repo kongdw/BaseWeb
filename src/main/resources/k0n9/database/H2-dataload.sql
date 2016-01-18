@@ -5,3 +5,13 @@ INSERT INTO sys_permission (id,name,permission,description,is_show) VALUES (3,'�
 INSERT INTO sys_permission (id,name,permission,description,is_show) VALUES (4,'删除','delete','删除数据操作的权限',1);
 INSERT INTO sys_permission (id,name,permission,description,is_show) VALUES (5,'查看','view','查看数据操作的权限',1);
 INSERT INTO sys_permission (id,name,permission,description,is_show) VALUES (6,'审核','audit','审核数据操作的权限',1);
+INSERT INTO SYS_RESOURCE (ID, NAME, IDENTITY, URL, PARENT_ID, PARENT_IDS, ICON, WEIGHT, IS_SHOW) VALUES (1,'档案管理','active','/active',0,'0,','icon-docs',1,TRUE );
+INSERT INTO SYS_RESOURCE (ID, NAME, IDENTITY, URL, PARENT_ID, PARENT_IDS, ICON, WEIGHT, IS_SHOW) VALUES (2,'档案浏览','active','/active/list',1,'0,1,','',1,TRUE );
+INSERT INTO SYS_RESOURCE (ID, NAME, IDENTITY, URL, PARENT_ID, PARENT_IDS, ICON, WEIGHT, IS_SHOW) VALUES (3,'我的借阅','active','/active/borrow',1,'0,1,','icon-doc',2,TRUE );
+INSERT INTO SYS_RESOURCE (ID, NAME, IDENTITY, URL, PARENT_ID, PARENT_IDS, ICON, WEIGHT, IS_SHOW) VALUES (4,'借阅历史','active','/active/borrow',1,'0,1,','icon-doc',3,TRUE );
+INSERT INTO SYS_RESOURCE (ID, NAME, IDENTITY, URL, PARENT_ID, PARENT_IDS, ICON, WEIGHT, IS_SHOW) VALUES (5,'借阅审核','active','/active/borrow',1,'0,1,','icon-doc',4,TRUE );
+INSERT INTO SYS_RESOURCE (ID, NAME, IDENTITY, URL, PARENT_ID, PARENT_IDS, ICON, WEIGHT, IS_SHOW) VALUES (5,'档案销毁记录','active','/active/borrow',1,'0,1,','icon-doc',5,TRUE );
+INSERT INTO SYS_RESOURCE (ID, NAME, IDENTITY, URL, PARENT_ID, PARENT_IDS, ICON, WEIGHT, IS_SHOW) VALUES (5,'类目维护','active','/active/borrow',1,'0,1,','icon-doc',6,TRUE );
+INSERT INTO SYS_RESOURCE (ID, NAME, IDENTITY, URL, PARENT_ID, PARENT_IDS, ICON, WEIGHT, IS_SHOW) VALUES (5,'案卷维护','active','/active/borrow',1,'0,1,','icon-doc',7,TRUE );
+INSERT INTO SYS_RESOURCE (ID, NAME, IDENTITY, URL, PARENT_ID, PARENT_IDS, ICON, WEIGHT, IS_SHOW) VALUES (5,'档案维护','active','/active/borrow',1,'0,1,','icon-doc',8,TRUE );
+INSERT INTO SYS_RESOURCE (ID, NAME, IDENTITY, URL, PARENT_ID, PARENT_IDS, ICON, WEIGHT, IS_SHOW) VALUES (5,'档案设置','active','/active/borrow',1,'0,1,','icon-doc',9,TRUE );
