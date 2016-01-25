@@ -18,7 +18,7 @@ import java.util.Map;
  * @author David Kong
  * @version 1.0
  */
-public class LogUtils {
+public abstract class LogUtils {
 
     public static final Logger ERROR_LOG = LoggerFactory.getLogger("k0n9-error");
     public static final Logger ACCESS_LOG = LoggerFactory.getLogger("k0n9-access");

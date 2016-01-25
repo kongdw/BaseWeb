@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
  * @author David Kong
  * @version 1.0
  */
-public class IpUtils {
+public abstract class IpUtils {
     private IpUtils() {
     }
     public static String getIpAddr(HttpServletRequest request) {

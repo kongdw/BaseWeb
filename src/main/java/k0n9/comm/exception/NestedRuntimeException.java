@@ -5,6 +5,7 @@ package k0n9.comm.exception;
  * @version 1.0
  */
 public abstract class NestedRuntimeException extends RuntimeException {
+
     private static final long serialVersionUID = 5439915454935047936L;
 
     public NestedRuntimeException(String msg) {
