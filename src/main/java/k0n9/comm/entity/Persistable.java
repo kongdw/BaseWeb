@@ -1,4 +1,4 @@
-package k0n9.comm.entity.plugin;
+package k0n9.comm.entity;
 
 import java.io.Serializable;
 

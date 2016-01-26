@@ -1,7 +1,6 @@
 package k0n9.comm.entity;
 
 import com.google.common.collect.Maps;
-import k0n9.comm.entity.plugin.Persistable;
 import k0n9.comm.stripes.JsonIgnore;
 import org.apache.commons.lang3.StringUtils;
 
