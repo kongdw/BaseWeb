@@ -15,9 +15,11 @@ import java.io.Reader;
 
 public class HsqlDbSetupServlet extends HttpServlet {
 
-	private static final Logger log = LoggerFactory.getLogger(HsqlDbSetupServlet.class);
+    private static final long serialVersionUID = 1764557430501091694L;
 
-	private SqlSessionManager sqlSessionManager;
+    private static final Logger log = LoggerFactory.getLogger(HsqlDbSetupServlet.class);
+
+    private SqlSessionManager sqlSessionManager;
 
 	@Inject
 	public HsqlDbSetupServlet(final SqlSessionManager sqlSessionManager) throws IOException {

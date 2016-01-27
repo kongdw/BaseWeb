@@ -1,5 +1,6 @@
 package k0n9.comm.dao;
 
+import k0n9.comm.entity.search.Searchable;
 import org.apache.ibatis.annotations.Param;
 
 import java.io.Serializable;
@@ -62,18 +63,11 @@ public interface BaseMapper<T,ID extends Serializable> {
     T fetch(ID id);
 
     /**
-     * 分页查询
-     * @param searchMap 查询条件
-     * @return 满足查询条件的集合
-     */
-    List<T> findPage(@Param("entity") T entity);
-
-    /**
      * 查询所有数据列表
-     * @param searchMap 查询条件
+     * @param searchable 查询条件
      * @return 满足查询条件的集合
      */
-    List<T> findList(T entity);
+    List<T> findList(@Param("search")Searchable searchable);
 
     /**
      * 查询ID数组

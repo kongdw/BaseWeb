@@ -7,6 +7,7 @@ import k0n9.comm.entity.search.exception.InvalidSearchValueException;
 import k0n9.comm.entity.search.exception.SearchException;
 import k0n9.comm.entity.search.filter.SearchFilter;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Collection;
 import java.util.Map;
 
@@ -24,6 +25,10 @@ public abstract class Searchable {
     public static Searchable newSearchable() {
         return new SearchRequest();
     }
+    public static Searchable newSearchable(final HttpServletRequest request) throws SearchException {
+        return new SearchRequest(request);
+    }
+
 
     /**
      * 根据查询参数Map创建一个新的查询

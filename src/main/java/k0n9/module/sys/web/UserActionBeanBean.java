@@ -47,13 +47,13 @@ public class UserActionBeanBean extends BaseActionBean<User,Long> {
 
     @DefaultHandler
     public Resolution list() {
-        users = userService.findPage(new User());
+        users = userService.findList(super.buildSearchable());
         return new ForwardResolution(LIST_FORWARD);
     }
 
 
     public Resolution ajaxList(){
-        users = userService.findList(new User());
+        users = userService.findList(super.buildSearchable());
         return new JsonResolution(users);
     }
 

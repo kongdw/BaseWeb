@@ -2,6 +2,7 @@ package k0n9.comm.service;
 
 import k0n9.comm.dao.BaseMapper;
 import k0n9.comm.entity.plugin.Persistable;
+import k0n9.comm.entity.search.Searchable;
 import org.mybatis.guice.transactional.Transactional;
 
 import java.io.Serializable;
@@ -67,23 +68,13 @@ public abstract class BaseService<T extends Persistable, ID extends Serializable
     }
 
     /**
-     * 分页查询
-     *
-     * @param entity
-     * @return
-     */
-    public List<T> findPage(T entity) {
-        return getEntityMapper().findPage(entity);
-    }
-
-    /**
      * 查询所有数据列表
      *
-     * @param entity
+     * @param searchable
      * @return
      */
-    public List<T> findList(T entity) {
-        return getEntityMapper().findList(entity);
+    public List<T> findList(Searchable searchable) {
+        return getEntityMapper().findList(searchable);
     }
 
     /**

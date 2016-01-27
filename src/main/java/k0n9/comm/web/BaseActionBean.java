@@ -1,6 +1,7 @@
 package k0n9.comm.web;
 
 import k0n9.comm.entity.plugin.Persistable;
+import k0n9.comm.entity.search.Searchable;
 import k0n9.comm.service.BaseService;
 import net.sourceforge.stripes.action.ActionBean;
 import net.sourceforge.stripes.action.ActionBeanContext;
@@ -25,5 +26,7 @@ public abstract class BaseActionBean<T extends Persistable, ID extends Serializa
         return context;
     }
 
-
+    public Searchable buildSearchable(){
+        return  Searchable.newSearchable(context.getRequest());
+    }
 }

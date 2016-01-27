@@ -13,6 +13,7 @@ import k0n9.comm.entity.search.filter.SearchFilter;
 import k0n9.comm.entity.search.filter.SearchFilterHelper;
 import org.apache.shiro.util.CollectionUtils;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -81,8 +82,11 @@ public final class SearchRequest extends Searchable {
             throws SearchException {
 
         toSearchFilters(searchParams);
-
         merge(sort, page);
+    }
+
+    public SearchRequest(HttpServletRequest request) {
+
     }
 
     private void toSearchFilters(final Map<String, Object> searchParams) throws SearchException {

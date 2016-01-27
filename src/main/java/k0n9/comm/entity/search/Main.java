@@ -13,6 +13,8 @@ public class Main {
         searchable.addSearchFilter(SearchFilterHelper.newCondition("username_like", "kongdw"));
         searchable.addSearchFilter(SearchFilterHelper.newCondition("createDate_eq","2010-01-01"));
         searchable.addSearchFilter(SearchFilterHelper.newCondition("role.name_eq","SYS"));
+        searchable.addSearchFilter("role.id",SearchOperator.in,new String[]{"1","3","4"});
+        searchable.addSearchFilter("id",SearchOperator.in,new String[]{"1","2","3"});
         searchable.convert(User.class);
         System.out.println(searchable);
     }
