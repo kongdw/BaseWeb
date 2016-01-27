@@ -34,7 +34,7 @@ public abstract class Searchable {
      * 根据查询参数Map创建一个新的查询
      */
     public static Searchable newSearchable(final Map<String, Object> searchParams) throws SearchException {
-        return new SearchRequest();
+        return new SearchRequest(searchParams);
     }
     /**
      * 创建一个新的查询

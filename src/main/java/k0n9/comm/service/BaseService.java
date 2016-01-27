@@ -1,7 +1,7 @@
 package k0n9.comm.service;
 
 import k0n9.comm.dao.BaseMapper;
-import k0n9.comm.entity.plugin.Persistable;
+import k0n9.comm.entity.Persistable;
 import k0n9.comm.entity.search.Searchable;
 import org.mybatis.guice.transactional.Transactional;
 
