@@ -45,7 +45,7 @@
       <dependency>
           <groupId>net.sourceforge.stripes</groupId>
           <artifactId>stripes</artifactId>
-          <version>1.6.0</version>
+          <version>1.5.8</version>
       </dependency>
       <dependency>
           <groupId>com.google.code.gson</groupId>
@@ -72,11 +72,16 @@
           <artifactId>commons-fileupload</artifactId>
           <version>1.3</version>
       </dependency>
-      <dependency>
-          <groupId>taglibs</groupId>
-          <artifactId>standard</artifactId>
-          <version>1.1.2</version>
-      </dependency>
+      <!--<dependency>-->
+          <!--<groupId>net.sourceforge.findbugs</groupId>-->
+          <!--<artifactId>jsr305</artifactId>-->
+          <!--<version>1.3.7</version>-->
+      <!--</dependency>-->
+      <!--<dependency>-->
+          <!--<groupId>taglibs</groupId>-->
+          <!--<artifactId>standard</artifactId>-->
+          <!--<version>1.1.2</version>-->
+      <!--</dependency>-->
       <dependency>
           <groupId>javax.servlet</groupId>
           <artifactId>jstl</artifactId>
@@ -93,46 +98,32 @@
           <version>1.7.5</version>
       </dependency>
       <dependency>
-          <groupId>javax.servlet</groupId>
-          <artifactId>javax.servlet-api</artifactId>
-          <version>3.0.1</version>
-          <scope>provided</scope>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-log4j12</artifactId>
+          <version>1.7.5</version>
       </dependency>
-      <dependency>
-          <groupId>javax.servlet.jsp</groupId>
-          <artifactId>javax.servlet.jsp-api</artifactId>
-          <version>2.2.1</version>
-          <scope>provided</scope>
-      </dependency>
+      <!--<dependency>-->
+          <!--<groupId>javax.servlet</groupId>-->
+          <!--<artifactId>javax.servlet-api</artifactId>-->
+          <!--<version>3.0.1</version>-->
+          <!--<scope>provided</scope>-->
+      <!--</dependency>-->
+      <!--<dependency>-->
+          <!--<groupId>javax.servlet.jsp</groupId>-->
+          <!--<artifactId>javax.servlet.jsp-api</artifactId>-->
+          <!--<version>2.2.1</version>-->
+          <!--<scope>provided</scope>-->
+      <!--</dependency>-->
       <dependency>
           <groupId>org.apache.shiro</groupId>
           <artifactId>shiro-core</artifactId>
           <version>1.2.3</version>
       </dependency>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
   </dependencies>
     <build>
         <!---${maven.build.timestamp}-->
         <finalName>${project.artifactId}-${project.version}</finalName>
-        <resources>
-            <resource>
-                <directory>src/main/java</directory>
-                <includes>
-                    <include>**/*.properties</include>
-                    <include>**/*.xml</include>
-                </includes>
-                <!-- 是否替换资源中的属性-->
-                <filtering>true</filtering>
-            </resource>
-            <resource>
-                <directory>src/main/resources</directory>
-            </resource>
-        </resources>
+
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
