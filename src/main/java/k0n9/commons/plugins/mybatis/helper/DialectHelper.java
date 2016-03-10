@@ -1,8 +1,8 @@
-package k0n9.commons.mybatis.helper;
+package k0n9.commons.plugins.mybatis.helper;
 
 
-import k0n9.commons.mybatis.dialect.Dialect;
-import k0n9.commons.mybatis.dialect.DialectFactory;
+import k0n9.commons.plugins.mybatis.dialect.Dialect;
+import k0n9.commons.plugins.mybatis.dialect.DialectFactory;
 
 import java.util.HashMap;
 import java.util.Map;

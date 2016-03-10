@@ -1,7 +1,8 @@
 package k0n9.module.sys.entity;
 
+import k0n9.commons.annotations.TableAlias;
 import k0n9.commons.entity.BaseEntity;
-import k0n9.commons.stripes.JsonIgnore;
+import k0n9.commons.plugins.stripes.JsonIgnore;
 
 import java.util.Date;
 
@@ -10,6 +11,7 @@ import java.util.Date;
  * @author David Kong
  * @version 1.0
  */
+@TableAlias("user")
 public class User extends BaseEntity<Long> {
 
     private static final long serialVersionUID = -3388132446560598779L;

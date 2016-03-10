@@ -1,6 +1,6 @@
-package k0n9.commons.guice;
+package k0n9.commons.plugins.guice;
 
-import k0n9.commons.mybatis.PaginationInterceptor;
+import k0n9.commons.plugins.mybatis.PaginationInterceptor;
 import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 import org.mybatis.guice.MyBatisModule;
 import org.mybatis.guice.datasource.builtin.PooledDataSourceProvider;

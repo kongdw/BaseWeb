@@ -1,11 +1,11 @@
-package k0n9.commons.mybatis;
+package k0n9.commons.plugins.mybatis;
 
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
-import k0n9.commons.mybatis.dialect.Dialect;
-import k0n9.commons.mybatis.helper.DialectHelper;
-import k0n9.commons.mybatis.helper.SqlHelper;
-import k0n9.commons.mybatis.util.PatternMatchUtils;
+import k0n9.commons.plugins.mybatis.dialect.Dialect;
+import k0n9.commons.plugins.mybatis.helper.DialectHelper;
+import k0n9.commons.plugins.mybatis.helper.SqlHelper;
+import k0n9.commons.plugins.mybatis.util.PatternMatchUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.executor.statement.StatementHandler;
 import org.apache.ibatis.mapping.BoundSql;

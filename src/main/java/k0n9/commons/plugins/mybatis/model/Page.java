@@ -1,4 +1,4 @@
-package k0n9.commons.mybatis.model;
+package k0n9.commons.plugins.mybatis.model;
 
 import java.util.ArrayList;
 import java.util.Collection;

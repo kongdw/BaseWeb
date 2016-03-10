@@ -1,4 +1,4 @@
-package k0n9.commons.mybatis.util;
+package k0n9.commons.plugins.mybatis.util;
 
 /**
  * Date Created  2014-2-18

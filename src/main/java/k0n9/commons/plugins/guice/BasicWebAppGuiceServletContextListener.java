@@ -1,4 +1,4 @@
-package k0n9.commons.guice;
+package k0n9.commons.plugins.guice;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;

@@ -1,4 +1,4 @@
-package k0n9.commons.stripes;
+package k0n9.commons.plugins.stripes;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

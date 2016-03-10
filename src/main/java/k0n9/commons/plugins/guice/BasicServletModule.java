@@ -1,8 +1,8 @@
-package k0n9.commons.guice;
+package k0n9.commons.plugins.guice;
 
 import com.google.inject.Singleton;
 import com.google.inject.servlet.ServletModule;
-import k0n9.commons.servlet.HsqlDbSetupServlet;
+import k0n9.commons.web.servlet.HsqlDbSetupServlet;
 import net.sourceforge.stripes.controller.DispatcherServlet;
 import net.sourceforge.stripes.controller.DynamicMappingFilter;
 import net.sourceforge.stripes.controller.StripesFilter;

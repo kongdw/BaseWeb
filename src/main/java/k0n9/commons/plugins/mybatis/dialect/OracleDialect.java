@@ -1,4 +1,4 @@
-package k0n9.commons.mybatis.dialect;
+package k0n9.commons.plugins.mybatis.dialect;
 
 /**
  * Date Created  14-2-19

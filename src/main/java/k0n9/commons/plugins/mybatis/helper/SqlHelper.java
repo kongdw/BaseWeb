@@ -1,6 +1,6 @@
-package k0n9.commons.mybatis.helper;
+package k0n9.commons.plugins.mybatis.helper;
 
-import k0n9.commons.mybatis.dialect.Dialect;
+import k0n9.commons.plugins.mybatis.dialect.Dialect;
 import org.apache.ibatis.mapping.BoundSql;
 import org.apache.ibatis.mapping.MappedStatement;
 import org.apache.ibatis.scripting.defaults.DefaultParameterHandler;

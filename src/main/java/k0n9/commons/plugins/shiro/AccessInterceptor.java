@@ -1,4 +1,4 @@
-package k0n9.commons.shiro;
+package k0n9.commons.plugins.shiro;
 
 import java.lang.reflect.Method;
 

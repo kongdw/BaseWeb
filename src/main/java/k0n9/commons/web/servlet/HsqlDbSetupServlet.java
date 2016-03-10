@@ -1,4 +1,4 @@
-package k0n9.commons.servlet;
+package k0n9.commons.web.servlet;
 
 import com.google.inject.Inject;
 import org.apache.commons.io.IOUtils;
