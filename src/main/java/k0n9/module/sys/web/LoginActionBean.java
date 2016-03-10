@@ -8,7 +8,7 @@ import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
-import net.sourceforge.stripes.validation.SimpleError;
+import net.sourceforge.stripes.validation.LocalizableError;
 import net.sourceforge.stripes.validation.Validate;
 import net.sourceforge.stripes.validation.ValidationError;
 
@@ -18,8 +18,6 @@ import net.sourceforge.stripes.validation.ValidationError;
  */
 @UrlBinding("/login")
 public class LoginActionBean implements ActionBean {
-
-    private static final String LOGIN_URL = "/index.jsp";
 
     private ActionBeanContext context;
 
@@ -74,7 +72,7 @@ public class LoginActionBean implements ActionBean {
             }
             return new RedirectResolution(MainActionBean.class);
         } else {
-            ValidationError error = new SimpleError("用户名或密码不正确.");
+            ValidationError error = new LocalizableError("usernameOrPasswordInvalided");
             getContext().getValidationErrors().addGlobalError(error);
             return getContext().getSourcePageResolution();
         }

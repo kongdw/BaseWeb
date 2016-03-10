@@ -1,9 +1,9 @@
 package k0n9.module.sys.web;
 
 import com.google.inject.Inject;
-import k0n9.comm.service.BaseService;
-import k0n9.comm.stripes.JsonResolution;
-import k0n9.comm.web.BaseActionBean;
+import k0n9.commons.service.BaseService;
+import k0n9.commons.stripes.JsonResolution;
+import k0n9.commons.web.BaseActionBean;
 import k0n9.module.sys.entity.User;
 import k0n9.module.sys.service.UserService;
 import net.sourceforge.stripes.action.DefaultHandler;
@@ -46,7 +46,7 @@ public class UserActionBeanBean extends BaseActionBean<User,Long> {
     }
 
     @DefaultHandler
-    public Resolution list() {
+    public Resolution list(User user) {
         users = userService.findList(super.buildSearchable());
         return new ForwardResolution(LIST_FORWARD);
     }

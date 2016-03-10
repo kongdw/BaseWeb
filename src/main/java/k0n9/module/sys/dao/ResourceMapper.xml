@@ -5,8 +5,8 @@
     <cache/>
 
     <sql id="resourceColumns">
-        ID,NAME,IDENTITY,URL,PARENT_ID,PARENT_IDS,
-        ICON,WEIGHT,IS_SHOW
+        id,name,identity,url,parent_id,parent_ids,
+        icon,weight,is_show
     </sql>
 
     <sql id="resourceJoin">
@@ -14,47 +14,47 @@
     </sql>
 
     <select id="fetch" resultType="Resource">
-        select
+        SELECT
         <include refid="resourceColumns"/>
-        from SYS_RESOURCE r
-        where id = #{id}
+        FROM sys_resource r
+        WHERE id = #{id}
     </select>
 
     <select id="findList" resultType="Resource">
-        select
+        SELECT
         <include refid="resourceColumns"/>
-        from SYS_RESOURCE r
-        order by WEIGHT ASC
+        FROM sys_resource r
+        ORDER BY weight ASC
     </select>
 
     <select id="findPage" resultType="Resource">
-        select
+        SELECT
         <include refid="resourceColumns"/>
-        from SYS_RESOURCE r
-        order by WEIGHT ASC
+        FROM sys_resource r
+        ORDER BY weight ASC
     </select>
 
     <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="Resource">
-		insert into SYS_RESOURCE (
-            NAME,"IDENTITY",URL,PARENT_ID,PARENT_IDS,ICON,
-            WEIGHT,IS_SHOW
-		) values (
+		INSERT INTO sys_resource (
+            name,"identity",url,parent_id,parent_ids,icon,
+            weight,is_show
+		) VALUES (
 		  #{name},#{identity},#{url},#{parentId},#{parentIds},#{icon},
 		  #{weight},#{isShow}
 		)
 	</insert>
 
     <update id="update" parameterType="Resource">
-		update SYS_RESOURCE set
-		  NAME=#{name},
-		  "IDENTITY"=#{identity},
-		  URL=#{url},
-		  PARENT_ID=#{parentId},
-		  PARENT_IDS=#{parentIds},
-	      ICON=#{icon},
-		  WEIGHT=#{weight},
-		  IS_SHOW=#{isShow}
-		  where id = #{id}
+		UPDATE sys_resource SET
+		  name=#{name},
+		  "identity"=#{identity},
+		  url=#{url},
+		  parent_id=#{parentId},
+		  parent_ids=#{parentIds},
+	      icon=#{icon},
+		  weight=#{weight},
+		  is_show=#{isShow}
+		  WHERE id = #{id}
 	</update>
 
 </mapper>

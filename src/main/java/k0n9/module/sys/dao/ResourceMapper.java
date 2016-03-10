@@ -1,6 +1,6 @@
 package k0n9.module.sys.dao;
 
-import k0n9.comm.dao.BaseMapper;
+import k0n9.commons.dao.BaseMapper;
 import k0n9.module.sys.entity.Resource;
 
 /**

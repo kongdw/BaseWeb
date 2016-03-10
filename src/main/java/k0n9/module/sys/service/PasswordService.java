@@ -2,7 +2,7 @@ package k0n9.module.sys.service;
 
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
-import k0n9.comm.utils.security.Md5Utils;
+import k0n9.commons.utils.security.Md5Utils;
 import k0n9.module.sys.entity.User;
 
 /**

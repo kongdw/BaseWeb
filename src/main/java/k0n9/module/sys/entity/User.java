@@ -1,7 +1,7 @@
 package k0n9.module.sys.entity;
 
-import k0n9.comm.entity.BaseEntity;
-import k0n9.comm.stripes.JsonIgnore;
+import k0n9.commons.entity.BaseEntity;
+import k0n9.commons.stripes.JsonIgnore;
 
 import java.util.Date;
 

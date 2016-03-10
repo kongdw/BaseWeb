@@ -1,7 +1,7 @@
 package k0n9.module.sys.entity;
 
-import k0n9.comm.entity.BaseEntity;
-import k0n9.comm.entity.plugin.Tree;
+import k0n9.commons.entity.BaseEntity;
+import k0n9.commons.entity.plugin.Tree;
 
 /**
  * 资源实体
