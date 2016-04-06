@@ -1,6 +1,6 @@
 package k0n9.module.sys.entity;
 
-import k0n9.commons.annotations.TableAlias;
+import k0n9.common.annotation.TableAlias;
 
 import java.io.Serializable;
 import java.util.List;

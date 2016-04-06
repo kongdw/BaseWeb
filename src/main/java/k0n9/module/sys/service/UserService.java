@@ -1,8 +1,8 @@
 package k0n9.module.sys.service;
 
 import com.google.inject.Inject;
-import k0n9.commons.dao.BaseMapper;
-import k0n9.commons.service.BaseService;
+import k0n9.common.dao.BaseMapper;
+import k0n9.common.service.BaseService;
 import k0n9.module.sys.dao.UserMapper;
 import k0n9.module.sys.entity.User;
 

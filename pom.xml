@@ -52,10 +52,15 @@
           <artifactId>gson</artifactId>
           <version>2.5</version>
       </dependency>
+      <!--<dependency>-->
+          <!--<groupId>com.h2database</groupId>-->
+          <!--<artifactId>h2</artifactId>-->
+          <!--<version>1.3.174</version>-->
+      <!--</dependency>-->
       <dependency>
-          <groupId>com.h2database</groupId>
-          <artifactId>h2</artifactId>
-          <version>1.3.174</version>
+          <groupId>mysql</groupId>
+          <artifactId>mysql-connector-java</artifactId>
+          <version>5.1.34</version>
       </dependency>
       <dependency>
           <groupId>org.apache.commons</groupId>
@@ -123,7 +128,20 @@
     <build>
         <!---${maven.build.timestamp}-->
         <finalName>${project.artifactId}-${project.version}</finalName>
-
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <!-- 是否替换资源中的属性-->
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>

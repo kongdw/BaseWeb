@@ -3,31 +3,22 @@
 <mapper namespace="k0n9.module.sys.dao.UserMapper">
 
     <sql id="userColumns">
-        ID,USERNAME,EMAIL,PHONE_NUMBER,PASSWORD,SALT,
-        CREATE_DATE,STATUS,DELETED,IS_ADMIN
+        id,username,email,phone_number,password,salt,
+        create_date,status,deleted,is_admin
     </sql>
 
     <select id="fetch" resultType="User">
         select
         <include refid="userColumns"/>
-        from SYS_USER
+        from sys_user
         where id = #{id}
     </select>
 
     <select id="findList" resultType="User">
         select
         <include refid="userColumns"/>
-        from SYS_USER
-        where id =#{id}
-        order by id DESC
-    </select>
-
-    <select id="findPage" resultType="User">
-        select
-        <include refid="userColumns"/>
-        from SYS_USER
-        where USERNAME = #{username}
-        order by id DESC
+        FROM sys_user
+        ORDER BY id DESC
     </select>
 
     <insert id="insert" useGeneratedKeys="true" keyProperty="id">

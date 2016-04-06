@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
     <display-name>Basic Web App</display-name>
     <listener>
-        <listener-class>k0n9.commons.plugins.guice.BasicWebAppGuiceServletContextListener</listener-class>
+        <listener-class>k0n9.common.plugins.guice.BasicWebAppGuiceServletContextListener</listener-class>
     </listener>
     <filter>
         <filter-name>GuiceFilter</filter-name>

@@ -1,8 +1,8 @@
 package k0n9.module.sys.entity;
 
-import k0n9.commons.annotations.TableAlias;
-import k0n9.commons.entity.BaseEntity;
-import k0n9.commons.plugins.stripes.JsonIgnore;
+import k0n9.common.annotation.TableAlias;
+import k0n9.common.entity.BaseEntity;
+import k0n9.common.plugins.stripes.JsonIgnore;
 
 /**
  * 角色

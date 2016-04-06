@@ -1,7 +1,7 @@
 package k0n9.module.sys;
 
-import k0n9.commons.utils.IpUtils;
-import k0n9.commons.utils.LogUtils;
+import k0n9.common.utils.IpUtils;
+import k0n9.common.utils.LogUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
