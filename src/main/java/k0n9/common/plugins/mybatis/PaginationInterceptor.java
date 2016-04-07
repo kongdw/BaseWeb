@@ -2,6 +2,7 @@ package k0n9.common.plugins.mybatis;
 
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
+import k0n9.common.entity.search.Searchable;
 import k0n9.common.plugins.mybatis.dialect.Dialect;
 import k0n9.common.plugins.mybatis.helper.DialectHelper;
 import k0n9.common.plugins.mybatis.helper.SqlHelper;
@@ -22,6 +23,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
+import java.util.Map;
 import java.util.Properties;
 
 /**
@@ -46,7 +48,7 @@ public class PaginationInterceptor implements Interceptor {
     private String pagingSqlIdRegex;
 
     @Inject
-    public PaginationInterceptor(@Named("dialect") String dialectStr,@Named("stmtIdRegex") String pagingSqlIdRegex){
+    public PaginationInterceptor(@Named("dialect") String dialectStr, @Named("stmtIdRegex") String pagingSqlIdRegex) {
         this.pagingSqlIdRegex = pagingSqlIdRegex;
         Dialect.Type databaseType = null;
         try {
@@ -84,7 +86,6 @@ public class PaginationInterceptor implements Interceptor {
         MetaObject metaStatementHandler = SystemMetaObject.forObject(statementHandler);
         RowBounds rowBounds = (RowBounds) metaStatementHandler.getValue("delegate.rowBounds");
         MappedStatement mappedStatement = (MappedStatement) metaStatementHandler.getValue("delegate.mappedStatement");
-
         int offset = rowBounds.getOffset();
         int limit = rowBounds.getLimit();
 

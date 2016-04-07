@@ -52,7 +52,7 @@ public interface BaseMapper<T, ID extends Serializable> {
      * @param ids 实体唯一标识集合
      * @return 影响行数
      */
-    int deleteByIds(ID... ids);
+    int deleteByIds(ID[] ids);
 
     /**
      * 获取一条数据
@@ -68,7 +68,7 @@ public interface BaseMapper<T, ID extends Serializable> {
      * @param searchable 查询条件
      * @return 满足查询条件的集合
      */
-    List<T> findList(@Param("search") Searchable searchable);
+    List<T> findPage(@Param("search") Searchable searchable);
 
     /**
      * 查询ID数组

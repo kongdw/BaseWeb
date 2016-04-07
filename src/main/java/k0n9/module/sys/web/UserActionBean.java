@@ -1,6 +1,8 @@
 package k0n9.module.sys.web;
 
 import com.google.inject.Inject;
+import k0n9.common.entity.search.SearchOperator;
+import k0n9.common.entity.search.Searchable;
 import k0n9.common.service.BaseService;
 import k0n9.common.plugins.stripes.JsonResolution;
 import k0n9.common.web.BaseActionBean;
@@ -13,6 +15,7 @@ import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
 import net.sourceforge.stripes.validation.ValidateNestedProperties;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,6 +32,7 @@ public class UserActionBean extends BaseActionBean<User,Long> {
 
     private List<User> users;
 
+    @Override
     protected BaseService<User, Long> getEntityService() {
         return userService;
     }
@@ -47,13 +51,16 @@ public class UserActionBean extends BaseActionBean<User,Long> {
 
     @DefaultHandler
     public Resolution list() {
-        users = userService.findList(getSearchable());
+        Searchable searchable = Searchable.newSearchable();
+        searchable.addSearchFilter("username", SearchOperator.suffixLike,"David");
+        searchable.addSearchFilter("id",SearchOperator.in,new ArrayList<Integer>().add(1));
+        users = userService.findPage(searchable);
         return new ForwardResolution(LIST_FORWARD);
     }
 
 
     public Resolution ajaxList(){
-        users = userService.findList(getSearchable());
+        users = userService.findPage(getSearchable());
         return new JsonResolution(users);
     }
 

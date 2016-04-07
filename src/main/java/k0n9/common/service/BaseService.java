@@ -53,7 +53,7 @@ public abstract class BaseService<T extends Persistable, ID extends Serializable
     }
 
     @Transactional
-    public int deleteByIds(ID... ids) {
+    public int deleteByIds(ID[] ids) {
         return getEntityMapper().deleteByIds(ids);
     }
 
@@ -73,8 +73,8 @@ public abstract class BaseService<T extends Persistable, ID extends Serializable
      * @param searchable
      * @return
      */
-    public List<T> findList(Searchable searchable) {
-        return getEntityMapper().findList(searchable);
+    public List<T> findPage(Searchable searchable) {
+        return getEntityMapper().findPage(searchable);
     }
 
     /**
