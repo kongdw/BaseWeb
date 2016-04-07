@@ -1,5 +1,7 @@
 package k0n9.module.sys.web;
 
+import k0n9.common.web.bind.PageableDefaults;
+import k0n9.common.web.bind.SearchableDefaults;
 import net.sourceforge.stripes.action.ActionBean;
 import net.sourceforge.stripes.action.ActionBeanContext;
 import net.sourceforge.stripes.action.DefaultHandler;
@@ -27,6 +29,8 @@ public class MainActionBean implements ActionBean{
     }
 
     @DefaultHandler
+    @PageableDefaults(value = 100,pageNumber = 2,sort ={"a=desc","b=desc"})
+    @SearchableDefaults(value = {"age_lt=123", "name_like=abc", "id_in=1,2,3,4"},merge = true)
     public Resolution main() {
         return new ForwardResolution("/main.jsp");
     }

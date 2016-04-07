@@ -51,7 +51,8 @@ public class UserActionBean extends BaseActionBean<User,Long> {
 
     @DefaultHandler
     public Resolution list() {
-        Searchable searchable = Searchable.newSearchable();
+
+        Searchable searchable = super.getSearchable();
         searchable.addSearchFilter("username", SearchOperator.suffixLike,"David");
         searchable.addSearchFilter("id",SearchOperator.in,new ArrayList<Integer>().add(1));
         users = userService.findPage(searchable);
