@@ -1,6 +1,5 @@
 package k0n9.module.sys.entity;
 
-import k0n9.common.annotation.TableAlias;
 import k0n9.common.entity.BaseEntity;
 import k0n9.common.plugins.stripes.JsonIgnore;
 
@@ -10,7 +9,6 @@ import k0n9.common.plugins.stripes.JsonIgnore;
  * @version 1.0
  * @since 1.0
  */
-@TableAlias("role")
 public class Role extends BaseEntity<Long>{
 
     private static final long serialVersionUID = 459946315221806103L;

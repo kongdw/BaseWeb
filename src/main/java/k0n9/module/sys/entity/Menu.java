@@ -1,7 +1,5 @@
 package k0n9.module.sys.entity;
 
-import k0n9.common.annotation.TableAlias;
-
 import java.io.Serializable;
 import java.util.List;
 
@@ -11,7 +9,6 @@ import java.util.List;
  * @author David Kong
  * @version 1.0
  */
-@TableAlias("menu")
 public class Menu implements Serializable {
 
     private static final long serialVersionUID = 8442291931896529187L;
