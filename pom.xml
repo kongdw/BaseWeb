@@ -38,11 +38,6 @@
           <version>4.0</version>
       </dependency>
       <dependency>
-          <groupId>com.silvermindsoftware.stripes</groupId>
-          <artifactId>stripes-guice</artifactId>
-          <version>3.3</version>
-      </dependency>
-      <dependency>
           <groupId>net.sourceforge.stripes</groupId>
           <artifactId>stripes</artifactId>
           <version>1.5.8</version>
@@ -77,11 +72,6 @@
           <artifactId>commons-fileupload</artifactId>
           <version>1.3</version>
       </dependency>
-      <!--<dependency>-->
-          <!--<groupId>net.sourceforge.findbugs</groupId>-->
-          <!--<artifactId>jsr305</artifactId>-->
-          <!--<version>1.3.7</version>-->
-      <!--</dependency>-->
       <!--<dependency>-->
           <!--<groupId>taglibs</groupId>-->
           <!--<artifactId>standard</artifactId>-->

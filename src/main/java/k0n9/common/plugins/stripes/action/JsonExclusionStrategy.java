@@ -1,4 +1,4 @@
-package k0n9.common.plugins.stripes;
+package k0n9.common.plugins.stripes.action;
 
 import com.google.gson.FieldAttributes;
 

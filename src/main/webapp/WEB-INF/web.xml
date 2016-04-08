@@ -25,7 +25,7 @@
     </context-param>
 
     <listener>
-        <listener-class>k0n9.common.plugins.guice.BasicWebAppGuiceServletContextListener</listener-class>
+        <listener-class>k0n9.common.guice.module.BasicWebAppGuiceServletContextListener</listener-class>
     </listener>
     <filter>
         <filter-name>GuiceFilter</filter-name>

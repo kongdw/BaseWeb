@@ -1,4 +1,4 @@
-package k0n9.common.plugins.guice;
+package k0n9.common.guice.module;
 
 import com.google.inject.Singleton;
 import com.google.inject.servlet.ServletModule;
@@ -10,10 +10,8 @@ import net.sourceforge.stripes.controller.StripesFilter;
 import java.util.HashMap;
 
 public class BasicServletModule extends ServletModule {
-
 	@Override
 	protected void configureServlets() {
-
 		// init hsql
 		bind(HsqlDbSetupServlet.class).in(Singleton.class);
 		serve("/hidden/setup").with(HsqlDbSetupServlet.class);
@@ -26,12 +24,13 @@ public class BasicServletModule extends ServletModule {
             private static final long serialVersionUID = 5833014702903316408L;
             {
 				put("ActionResolver.Packages", "k0n9.module.sys.web");
-				put("Extension.Packages", "k0n9.common.web.extensions");
+				put("Extension.Packages", "k0n9.common.plugins.stripes.extensions");
 				put("Stripes.EncryptionKey", "kongdewen");
 				put("PopulationStrategy.Class", "net.sourceforge.stripes.tag.BeanFirstPopulationStrategy");
-				put("Configuration.Class", "com.silvermindsoftware.sg.config.GuiceRuntimeConfiguration");
-				put("ActionBeanContextFactory.Class", "com.silvermindsoftware.sg.controller.GuiceActionBeanContextFactory");
-				put("ActionResolver.Class", "com.silvermindsoftware.sg.controller.GuiceActionResolver");
+				put("Configuration.Class", "k0n9.common.guice.config.GuiceRuntimeConfiguration");
+				put("ActionBeanContextFactory.Class", "k0n9.common.guice.controller.GuiceActionBeanContextFactory");
+				put("ActionResolver.Class", "k0n9.common.guice.controller.GuiceActionResolver");
+                put("ActionBeanPropertyBinder.Class","k0n9.common.plugins.stripes.controller.ActionBeanPropertyBinder");
 				put("FileUpload.MaximumPostSize", "50mb");
 			}
 		});

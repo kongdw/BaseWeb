@@ -5,7 +5,6 @@ import k0n9.common.entity.search.Searchable;
 import k0n9.common.service.BaseService;
 import net.sourceforge.stripes.action.ActionBean;
 import net.sourceforge.stripes.action.ActionBeanContext;
-import net.sourceforge.stripes.validation.ValidateNestedProperties;
 
 import java.io.Serializable;
 
@@ -15,14 +14,15 @@ import java.io.Serializable;
  */
 public abstract class BaseActionBean<T extends Persistable, ID extends Serializable> implements ActionBean {
 
+    public static final String ADMIN_URL_PREFIX = "/WEB-INF/jsp/admin";
+
+    public static final String FRONT_URL_PREFIX = "/WEB-INF/jsp/front";
+
     private ActionBeanContext context;
 
     /**
      * 标准查询接口，通过拦截器动态注入到ActionBean中。
      */
-    @ValidateNestedProperties({
-
-    })
     private Searchable searchable;
 
     abstract protected BaseService<T, ID> getEntityService();

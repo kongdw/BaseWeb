@@ -4,7 +4,7 @@ import com.google.inject.Inject;
 import k0n9.common.entity.search.SearchOperator;
 import k0n9.common.entity.search.Searchable;
 import k0n9.common.service.BaseService;
-import k0n9.common.plugins.stripes.JsonResolution;
+import k0n9.common.plugins.stripes.action.JsonResolution;
 import k0n9.common.web.BaseActionBean;
 import k0n9.module.sys.entity.User;
 import k0n9.module.sys.service.UserService;

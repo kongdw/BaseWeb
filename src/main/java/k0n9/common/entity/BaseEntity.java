@@ -1,7 +1,7 @@
 package k0n9.common.entity;
 
 import com.google.common.collect.Maps;
-import k0n9.common.plugins.stripes.JsonIgnore;
+import k0n9.common.plugins.stripes.action.JsonIgnore;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.Serializable;

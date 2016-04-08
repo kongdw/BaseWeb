@@ -1,4 +1,4 @@
-package k0n9.common.plugins.guice;
+package k0n9.common.guice.module;
 
 import k0n9.common.plugins.mybatis.PaginationInterceptor;
 import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;

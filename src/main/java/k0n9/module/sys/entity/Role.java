@@ -1,7 +1,7 @@
 package k0n9.module.sys.entity;
 
 import k0n9.common.entity.BaseEntity;
-import k0n9.common.plugins.stripes.JsonIgnore;
+import k0n9.common.plugins.stripes.action.JsonIgnore;
 
 /**
  * 角色
