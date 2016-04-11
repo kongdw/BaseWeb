@@ -30,7 +30,7 @@ public class BasicServletModule extends ServletModule {
 				put("Configuration.Class", "k0n9.common.guice.config.GuiceRuntimeConfiguration");
 				put("ActionBeanContextFactory.Class", "k0n9.common.guice.controller.GuiceActionBeanContextFactory");
 				put("ActionResolver.Class", "k0n9.common.guice.controller.GuiceActionResolver");
-                put("ActionBeanPropertyBinder.Class","k0n9.common.plugins.stripes.controller.ActionBeanPropertyBinder");
+                put("ActionBeanPropertyBinder.Class","k0n9.common.plugins.stripes.controller.MyActionBeanPropertyBinder");
 				put("FileUpload.MaximumPostSize", "50mb");
 			}
 		});

@@ -9,17 +9,19 @@ import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
+import net.sourceforge.stripes.validation.Validate;
 
 /**
  * @author David Kong
  * @version 1.0
  */
 @UrlBinding("/main")
-public class MainActionBean implements ActionBean{
+public class MainActionBean implements ActionBean {
 
     private ActionBeanContext context;
 
-    private Searchable searchable;
+    @Validate(on = {"main"}, required = true)
+    private Searchable searchable = Searchable.newSearchable();
 
     @Override
     public void setContext(ActionBeanContext context) {
@@ -32,9 +34,17 @@ public class MainActionBean implements ActionBean{
     }
 
     @DefaultHandler
-    @PageableDefaults(value = 100,pageNumber = 2,sort ={"a=desc","b=desc"})
-    @SearchableDefaults(value = {"age_lt=124", "name_like=abc", "id_in=1,2,3,4"},merge = true)
+    @PageableDefaults(value = 100, pageNumber = 2, sort = {"a=desc", "b=desc"})
+    @SearchableDefaults(value = {"age_lt=124", "name_like=abc", "id_in=1,2,3,4"}, merge = true)
     public Resolution main() {
         return new ForwardResolution("/main.jsp");
+    }
+
+    public Searchable getSearchable() {
+        return searchable;
+    }
+
+    public void setSearchable(Searchable searchable) {
+        this.searchable = searchable;
     }
 }

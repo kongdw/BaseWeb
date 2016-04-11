@@ -16,6 +16,7 @@ import java.util.Map;
 
 /**
  * Pageable 解析器
+ *
  * @author David Kong
  * @version 1.0
  */
@@ -78,6 +79,10 @@ public class PageableArgumentResolver extends BaseArgumentResolver {
 
         PageableDefaults pageableDefaults = handler.getAnnotation(PageableDefaults.class);
         Pageable defaultPageRequest = defaultPageable(pageableDefaults);
+
+        if (defaultPageRequest == null) {
+            defaultPageRequest = DEFAULT_PAGE_REQUEST;
+        }
 
         Map<String, String[]> pageableMap = getPrefixParameterMap(getPagePrefix(), request, true);
         Map<String, String[]> sortMap = getPrefixParameterMap(getSortPrefix(), request, false);

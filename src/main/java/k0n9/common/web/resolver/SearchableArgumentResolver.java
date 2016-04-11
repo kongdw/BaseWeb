@@ -22,6 +22,10 @@ import java.util.Map;
 public class SearchableArgumentResolver extends BaseArgumentResolver {
     private static final PageableArgumentResolver DEFAULT_PAGEABLE_RESOLVER = new PageableArgumentResolver();
     private static final String DEFAULT_SEARCH_PREFIX = "search";
+    /**
+     * 分页参数解析器
+     */
+    private PageableArgumentResolver pageableMethodArgumentResolver = DEFAULT_PAGEABLE_RESOLVER;
 
     private String prefix = DEFAULT_SEARCH_PREFIX;
 
@@ -30,7 +34,7 @@ public class SearchableArgumentResolver extends BaseArgumentResolver {
         HttpServletRequest request = executionContext.getActionBeanContext().getRequest();
         Method method = executionContext.getHandler();
         SearchableDefaults searchDefaults = getSearchableDefaults(method);
-        Map<String, String[]> searcheableMap = getPrefixParameterMap(getPrefix(),request , true);
+        Map<String, String[]> searcheableMap = getPrefixParameterMap(getPrefix(), request, true);
 
         boolean hasCustomSearchFilter = searcheableMap.size() > 0;
         boolean needMergeDefault = searchDefaults != null && searchDefaults.merge();
@@ -75,6 +79,7 @@ public class SearchableArgumentResolver extends BaseArgumentResolver {
 
         return searchable;
     }
+
     /**
      * 设置查询参数前缀
      *
@@ -88,10 +93,6 @@ public class SearchableArgumentResolver extends BaseArgumentResolver {
         return prefix;
     }
 
-    /**
-     * 分页参数解析器
-     */
-    private PageableArgumentResolver pageableMethodArgumentResolver = DEFAULT_PAGEABLE_RESOLVER;
 
     public void setPageableMethodArgumentResolver(PageableArgumentResolver pageableMethodArgumentResolver) {
         this.pageableMethodArgumentResolver = pageableMethodArgumentResolver;
@@ -106,6 +107,7 @@ public class SearchableArgumentResolver extends BaseArgumentResolver {
         }
         return result.toArray(values);
     }
+
     private SearchableDefaults getSearchableDefaults(Method method) {
         return method.getAnnotation(SearchableDefaults.class);
     }
