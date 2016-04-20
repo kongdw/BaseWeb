@@ -20,6 +20,12 @@
         WHERE id = #{id}
     </select>
 
+    <select id="findMenus" resultType="Resource">
+        SELECT
+        <include refid="resourceColumns"/>
+        FROM sys_resource r
+    </select>
+
     <select id="findPage" resultType="Resource">
         SELECT
         <include refid="resourceColumns"/>

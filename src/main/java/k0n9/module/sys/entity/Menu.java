@@ -1,5 +1,7 @@
 package k0n9.module.sys.entity;
 
+import com.google.common.collect.Lists;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -18,7 +20,12 @@ public class Menu implements Serializable {
     private String icon;
     private List<Menu> children;
 
-    private Boolean hasChildren;
+    public Menu(Long id, String name, String icon, String url) {
+        this.id = id;
+        this.name = name;
+        this.icon = icon;
+        this.url = url;
+    }
 
     public Long getId() {
         return id;
@@ -45,6 +52,9 @@ public class Menu implements Serializable {
     }
 
     public List<Menu> getChildren() {
+        if (children == null) {
+            children = Lists.newArrayList();
+        }
         return children;
     }
 

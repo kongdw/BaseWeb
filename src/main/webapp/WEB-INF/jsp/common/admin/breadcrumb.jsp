@@ -1,15 +1,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<ul class="page-breadcrumb">
-  <li>
-    <i class="fa fa-home"></i>
-    <a href="index.html">Home</a>
-    <i class="fa fa-angle-right"></i>
-  </li>
-  <li>
-    <a href="#">Page Layouts</a>
-    <i class="fa fa-angle-right"></i>
-  </li>
-  <li>
-    <a href="#">Fluid Page</a>
-  </li>
-</ul>
+<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+  <ul class="breadcrumb">
+    <li>
+      <i class="ace-icon fa fa-home home-icon"></i>
+      <a href="#">Home</a>
+    </li>
+    <li class="active">Dashboard</li>
+  </ul>
+  <div class="nav-search" id="nav-search">
+    <form class="form-search">
+								<span class="input-icon">
+									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+									<i class="ace-icon fa fa-search nav-search-icon"></i>
+								</span>
+    </form>
+  </div>
+</div>
