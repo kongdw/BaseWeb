@@ -20,7 +20,7 @@ public class MainActionBean implements ActionBean {
 
     private ActionBeanContext context;
 
-    @Validate(on = {"main"}, required = true)
+    @Validate(on = {"main"}, required = true,ignore = true)
     private Searchable searchable = Searchable.newSearchable();
 
     @Override

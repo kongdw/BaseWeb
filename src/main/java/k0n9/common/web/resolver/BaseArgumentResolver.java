@@ -1,7 +1,8 @@
 package k0n9.common.web.resolver;
 
 import com.google.common.collect.Maps;
-import net.sourceforge.stripes.controller.ExecutionContext;
+import net.sourceforge.stripes.action.ActionBean;
+import net.sourceforge.stripes.action.ActionBeanContext;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Enumeration;
@@ -64,7 +65,7 @@ public abstract class BaseArgumentResolver {
         return ch != '.' && ch != '_' && !(ch >= '0' && ch <= '9');
     }
 
-    public abstract Object resolveArgument(ExecutionContext executionContext);
+    public abstract Object resolveArgument(ActionBean bean, ActionBeanContext context);
 
 
 }

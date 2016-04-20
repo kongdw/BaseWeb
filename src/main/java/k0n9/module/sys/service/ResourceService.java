@@ -20,4 +20,6 @@ public class ResourceService extends BaseService<Resource,Long> {
         return resourceMapper;
     }
 
+
+
 }

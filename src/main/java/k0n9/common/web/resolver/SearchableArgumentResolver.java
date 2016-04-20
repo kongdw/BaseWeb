@@ -5,7 +5,8 @@ import k0n9.common.entity.search.Searchable;
 import k0n9.common.entity.search.domain.Pageable;
 import k0n9.common.utils.CollectionUtils;
 import k0n9.common.web.bind.SearchableDefaults;
-import net.sourceforge.stripes.controller.ExecutionContext;
+import net.sourceforge.stripes.action.ActionBean;
+import net.sourceforge.stripes.action.ActionBeanContext;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
@@ -30,9 +31,14 @@ public class SearchableArgumentResolver extends BaseArgumentResolver {
     private String prefix = DEFAULT_SEARCH_PREFIX;
 
     @Override
-    public Object resolveArgument(ExecutionContext executionContext) {
-        HttpServletRequest request = executionContext.getActionBeanContext().getRequest();
-        Method method = executionContext.getHandler();
+    public Object resolveArgument(ActionBean bean, ActionBeanContext context) {
+        HttpServletRequest request = context.getRequest();
+        Method method = null;
+        try {
+            method = bean.getClass().getMethod(context.getEventName());
+        } catch (NoSuchMethodException e) {
+            throw new RuntimeException("未找到对应的方法："+context.getEventName());
+        }
         SearchableDefaults searchDefaults = getSearchableDefaults(method);
         Map<String, String[]> searcheableMap = getPrefixParameterMap(getPrefix(), request, true);
 
@@ -63,7 +69,7 @@ public class SearchableArgumentResolver extends BaseArgumentResolver {
             }
         }
 
-        Pageable pageable = (Pageable) pageableMethodArgumentResolver.resolveArgument(executionContext);
+        Pageable pageable = (Pageable) pageableMethodArgumentResolver.resolveArgument(bean,context);
         //默认分页及排序
         if (searchDefaults == null) {
             searchable.setPage(pageable);

@@ -13,7 +13,12 @@
         FROM sys_user
         WHERE id = #{id}
     </select>
-
+    <select id="fetchByUsername" resultType="User">
+        SELECT
+        <include refid="userColumns"/>
+        FROM sys_user
+        WHERE username = #{username}
+    </select>
     <select id="findPage" resultType="User">
         SELECT
         <include refid="userColumns"/>

@@ -5,7 +5,8 @@ import k0n9.common.entity.search.domain.PageRequest;
 import k0n9.common.entity.search.domain.Pageable;
 import k0n9.common.entity.search.domain.Sort;
 import k0n9.common.web.bind.PageableDefaults;
-import net.sourceforge.stripes.controller.ExecutionContext;
+import net.sourceforge.stripes.action.ActionBean;
+import net.sourceforge.stripes.action.ActionBeanContext;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
@@ -73,10 +74,14 @@ public class PageableArgumentResolver extends BaseArgumentResolver {
     }
 
     @Override
-    public Object resolveArgument(ExecutionContext executionContext) {
-        HttpServletRequest request = executionContext.getActionBeanContext().getRequest();
-        Method handler = executionContext.getHandler();
-
+    public Object resolveArgument(ActionBean bean, ActionBeanContext context) {
+        HttpServletRequest request = context.getRequest();
+        Method handler = null;
+        try {
+            handler = bean.getClass().getMethod(context.getEventName());
+        } catch (NoSuchMethodException e) {
+            throw new RuntimeException("未找到对应的方法："+context.getEventName());
+        }
         PageableDefaults pageableDefaults = handler.getAnnotation(PageableDefaults.class);
         Pageable defaultPageRequest = defaultPageable(pageableDefaults);
 

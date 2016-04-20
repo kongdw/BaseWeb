@@ -1,42 +1,84 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/WEB-INF/jsp/common/import-taglib.jsp"%>
-<stripes:layout-render name="/WEB-INF/jsp/front/login.jsp">
-  <stripes:layout-component name="css-extend">
-    <link href="${ctx}/assets/plugins/select2/select2.css" rel="stylesheet" type="text/css"/>
-    <link href="${ctx}/assets/css/login-soft.css" rel="stylesheet" type="text/css"/>
-  </stripes:layout-component>
-  <stripes:layout-component name="js-extend">
-    <script src="${ctx}/assets/plugins/backstretch/jquery.backstretch.min.js" type="text/javascript"></script>
-    <script src="${ctx}/assets/js/login-soft.js" type="text/javascript"></script>
-  </stripes:layout-component>
+<stripes:layout-render name="/WEB-INF/jsp/layout/login.jsp">
   <stripes:layout-component name="content">
-    <stripes:form class="login-form" action="${ctx}/login" method="post">
-      <h3 class="form-title">系统登录</h3>
-      <stripes:errors/>
-      <div class="form-group">
-        <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
-        <label class="control-label visible-ie8 visible-ie9">用户名</label>
-
-        <div class="input-icon">
-          <i class="fa fa-user"></i>
-          <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="用户名" name="username"/>
+    <div class="main-container">
+      <div class="main-content">
+        <div class="row">
+          <div class="col-sm-10 col-sm-offset-1">
+            <div class="login-container">
+              <div class="center">
+                <h1>
+                  <i class="ace-icon fa fa-leaf green"></i>
+                  <span class="red">档案</span>
+                  <span class="grey" id="id-text2">管理系统</span>
+                </h1>
+                <h4 class="blue" id="id-company-text">&copy; 中公网医疗信息技术有限公司</h4>
+              </div>
+              <div class="space-6"></div>
+              <div class="position-relative">
+                <div id="login-box" class="login-box visible widget-box no-border">
+                  <div class="widget-body">
+                    <div class="widget-main">
+                      <h4 class="header blue lighter bigger">
+                        <i class="ace-icon fa fa-coffee green"></i>
+                        用户登录
+                      </h4>
+                      <stripes:errors/>
+                      <div class="space-6"></div>
+                      <stripes:form  class="login-form" action="${ctx}/login" method="post">
+                        <fieldset>
+                          <label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input name="username" type="text" class="form-control" placeholder="用户名" />
+															<i class="ace-icon fa fa-user"></i>
+														</span>
+                          </label>
+                          <label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input name="password" type="password" class="form-control" placeholder="密码" />
+															<i class="ace-icon fa fa-lock"></i>
+														</span>
+                          </label>
+                          <div class="space"></div>
+                          <div class="clearfix">
+                            <label class="inline">
+                              <input type="checkbox" class="ace" />
+                              <span class="lbl"> 记住我</span>
+                            </label>
+                            <button type="submit" class="width-35 pull-right btn btn-sm btn-primary">
+                              <i class="ace-icon fa fa-key"></i>
+                              <span class="bigger-110">登录</span>
+                            </button>
+                          </div>
+                          <div class="space-4"></div>
+                        </fieldset>
+                      </stripes:form>
+                    </div>
+                    <div class="toolbar clearfix">
+                      <div class="space-4"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="navbar-fixed-top align-right">
+                <br />
+                &nbsp;
+                <a id="btn-login-dark" href="#">Dark</a>
+                &nbsp;
+                <span class="blue">/</span>
+                &nbsp;
+                <a id="btn-login-blur" href="#">Blur</a>
+                &nbsp;
+                <span class="blue">/</span>
+                &nbsp;
+                <a id="btn-login-light" href="#">Light</a>
+                &nbsp; &nbsp; &nbsp;
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="form-group">
-        <label class="control-label visible-ie8 visible-ie9">密码</label>
-
-        <div class="input-icon">
-          <i class="fa fa-lock"></i>
-          <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="密码" name="password"/>
-        </div>
-      </div>
-      <div class="form-actions">
-        <label class="checkbox">
-          <input type="checkbox" name="remember" value="1"/> 记住我 </label>
-        <button type="submit" class="btn blue pull-right">
-          登录 <i class="m-icon-swapright m-icon-white"></i>
-        </button>
-      </div>
-    </stripes:form>
+    </div>
   </stripes:layout-component>
 </stripes:layout-render>

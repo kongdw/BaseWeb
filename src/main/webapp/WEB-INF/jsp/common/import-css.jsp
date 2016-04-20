@@ -1,15 +1,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!-- BEGIN GLOBAL MANDATORY STYLES -->
-<link href="${ctx}/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-<link href="${ctx}/assets/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css"/>
-<link href="${ctx}/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-<link href="${ctx}/assets/plugins/uniform/css/uniform.default.min.css" rel="stylesheet" type="text/css"/>
-<!-- END GLOBAL MANDATORY STYLES -->
-<!-- BEGIN THEME STYLES -->
-<link href="${ctx}/assets/css/components.css" id="style_components" rel="stylesheet" type="text/css"/>
-<link href="${ctx}/assets/css/plugins.css" rel="stylesheet" type="text/css"/>
-<link href="${ctx}/assets/css/layout.css" rel="stylesheet" type="text/css"/>
-<link id="style_color" href="${ctx}/assets/css/themes/default.css" rel="stylesheet" type="text/css"/>
-<link href="${ctx}/assets/css/custom.css" rel="stylesheet" type="text/css"/>
-<!-- END THEME STYLES -->
+<link rel="stylesheet" href="${ctx}/assets/css/bootstrap.css" />
+<link rel="stylesheet" href="${ctx}/assets/css/font-awesome.css" />
+<link rel="stylesheet" href="${ctx}/assets/css/ace-fonts.css" />
+<link rel="stylesheet" href="${ctx}/assets/css/ace.css" />
+<!--[if lte IE 9]>
+<link rel="stylesheet" href="${ctx}/assets/css/ace-part2.css" />
+<![endif]-->
+<link rel="stylesheet" href="${ctx}/assets/css/ace-rtl.css" />
+<!--[if lte IE 9]>
+<link rel="stylesheet" href="${ctx}/assets/css/ace-ie.css" />
+<![endif]-->
+<!--[if lt IE 9]>
+<script src="${ctx}/assets/js/html5shiv.js"></script>
+<script src="${ctx}/assets/js/respond.js"></script>
+<![endif]-->
 <link rel="shortcut icon" href="favicon.ico"/>

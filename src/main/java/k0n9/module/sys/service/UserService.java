@@ -24,4 +24,8 @@ public class UserService extends BaseService<User,Long> {
         return userMapper;
     }
 
+    public User fetchByUsername(String username){
+        return userMapper.fetchByUsername(username);
+    }
+
 }

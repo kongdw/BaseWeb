@@ -9,4 +9,7 @@ import k0n9.module.sys.entity.User;
  * @version 1.0
  */
 public interface UserMapper extends BaseMapper<User,Long> {
+
+    public User fetchByUsername(String username);
+
 }
