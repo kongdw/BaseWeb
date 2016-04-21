@@ -24,6 +24,7 @@
         SELECT
         <include refid="resourceColumns"/>
         FROM sys_resource r
+        order by id desc
     </select>
 
     <select id="findPage" resultType="Resource">

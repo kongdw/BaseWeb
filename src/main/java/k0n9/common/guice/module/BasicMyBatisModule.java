@@ -39,8 +39,8 @@ public class BasicMyBatisModule extends MyBatisModule {
         bindTransactionFactoryType(JdbcTransactionFactory.class);
         bindDataSourceProviderType(PooledDataSourceProvider.class);
         useCacheEnabled(true);
-        addMapperClasses("k0n9.module.sys.dao");
-        addSimpleAliases("k0n9.module.sys.entity");
+        addMapperClasses("k0n9.module.sys.dao,k0n9.module.archive.dao");
+        addSimpleAliases("k0n9.module.sys.entity,k0n9.module.archive.entity");
         addInterceptorClass(PaginationInterceptor.class);
     }
 }
