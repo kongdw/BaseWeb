@@ -102,7 +102,7 @@ jQuery(function($) {
 			 close_mobile_menu: '#sidebar',
 			 close_dropdowns: true,
 			 
-			 'default_url': 'page/index',//default hash
+			 'default_url': '#',//default hash
 			 'content_url': function(hash) {
 				//***NOTE***
 				//this is for Ace demo only, you should change it to return a valid URL
@@ -112,8 +112,8 @@ jQuery(function($) {
 				var path = document.location.pathname;
 
 				//for example in Ace HTML demo version we convert /ajax/index.html#page/gallery to > /ajax/content/gallery.html and load it
-				if(path.match(/(\/ajax\/)(index\.html)?/))
-					return path.replace(/(\/ajax\/)(index\.html)?/, '/ajax/content/'+hash.replace(/^page\//, '')+'.html') ;
+				if(path.match(/(\/main)?/))
+					return path.replace(/(\/main)?/, ''+hash.replace(/^page\//, '')+'') ;
 
 				//for example in Ace PHP demo version we convert "ajax.php#page/dashboard" to "ajax.php?page=dashboard" and load it
 				return path + "?" + hash.replace(/\//, "=");

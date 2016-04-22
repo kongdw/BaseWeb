@@ -29,6 +29,9 @@ public abstract class BaseArgumentResolver {
         Enumeration<String> parameterNames = request.getParameterNames();
         while (parameterNames.hasMoreElements()) {
             String name = parameterNames.nextElement();
+            if(namePrefixLength == name.length()){
+                continue;
+            }
             if (name.startsWith(namePrefix)) {
                 //page.pn  则截取 pn
                 if (subPrefix) {

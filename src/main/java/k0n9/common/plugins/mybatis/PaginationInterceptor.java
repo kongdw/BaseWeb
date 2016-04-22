@@ -2,7 +2,6 @@ package k0n9.common.plugins.mybatis;
 
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
-import k0n9.common.entity.search.Searchable;
 import k0n9.common.plugins.mybatis.dialect.Dialect;
 import k0n9.common.plugins.mybatis.helper.DialectHelper;
 import k0n9.common.plugins.mybatis.helper.SqlHelper;
@@ -23,13 +22,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
-import java.util.Map;
 import java.util.Properties;
 
 /**
- * Date Created  2014-2-17
  *
- * @author loafer[zjh527@163.com]
+ * @author DavidKong
  * @version 2.0
  */
 @Intercepts({@Signature(type = StatementHandler.class, method = "prepare", args = {Connection.class})})
