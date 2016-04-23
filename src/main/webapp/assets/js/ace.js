@@ -11,7 +11,7 @@ if (typeof jQuery === 'undefined') { throw new Error('Ace\'s JavaScript requires
 //document ready function
 jQuery(function($) {
   try {
-	ace.demo.init();
+	// ace.demo.init();
   } catch(e) {}
 });
 

@@ -7,10 +7,10 @@
     <sql id="selectColumns">
         id,
         title,
-        type_id as type.id,
-        category_id as category.id,
-        deadline_id as deadline.id,
-        doc_class_id as docClass.id,
+        type_id as "type.id",
+        category_id as "category.id",
+        deadline_id as "deadline.id",
+        doc_class_id as "docClass.id",
         year,
         doc_no,
         doc_date,
@@ -21,9 +21,9 @@
         page_num,
         responsible,
         dept,
-        privacy_level_id as privacyLevel.id,
-        urgent_level_id as urgentLevel.id,
-        remark,
+        privacy_level_id as "privacyLevel.id",
+        urgent_level_id as "urgentLevel.id",
+        remark
     </sql>
 
     <sql id="Join">

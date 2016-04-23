@@ -51,17 +51,13 @@ public class UserActionBean extends BaseActionBean<User,Long> {
 
     @DefaultHandler
     public Resolution list() {
-
-        Searchable searchable = super.getSearchable();
-        searchable.addSearchFilter("username", SearchOperator.suffixLike,"David");
-        searchable.addSearchFilter("id",SearchOperator.in,new ArrayList<Integer>().add(1));
-        users = userService.findPage(searchable);
+        users = userService.findPage(new User());
         return new ForwardResolution(LIST_FORWARD);
     }
 
 
     public Resolution ajaxList(){
-        users = userService.findPage(getSearchable());
+        users = userService.findPage(new User());
         return new JsonResolution(users);
     }
 

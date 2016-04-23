@@ -14,16 +14,7 @@ import java.io.Serializable;
  */
 public abstract class BaseActionBean<T extends Persistable, ID extends Serializable> implements ActionBean {
 
-    public static final String ADMIN_URL_PREFIX = "/WEB-INF/jsp/admin";
-
-    public static final String FRONT_URL_PREFIX = "/WEB-INF/jsp/front";
-
     private ActionBeanContext context;
-
-    /**
-     * 标准查询接口，通过拦截器动态注入到ActionBean中。
-     */
-    private Searchable searchable;
 
     abstract protected BaseService<T, ID> getEntityService();
 
@@ -35,11 +26,4 @@ public abstract class BaseActionBean<T extends Persistable, ID extends Serializa
         return context;
     }
 
-    protected Searchable getSearchable() {
-        return searchable;
-    }
-
-    protected void setSearchable(Searchable searchable) {
-        this.searchable = searchable;
-    }
 }

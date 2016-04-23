@@ -1,6 +1,7 @@
 package k0n9.module.archive.web;
 
 import com.google.inject.Inject;
+import k0n9.common.plugins.mybatis.model.Page;
 import k0n9.common.service.BaseService;
 import k0n9.common.web.BaseActionBean;
 import k0n9.module.archive.entity.Archive;
@@ -15,7 +16,12 @@ import net.sourceforge.stripes.action.UrlBinding;
  * @version 1.0
  */
 @UrlBinding("/archive/browse")
-public class ArchiveActionBean extends BaseActionBean<Archive,Long> {
+public class ArchiveActionBean extends BaseActionBean<Archive, Long> {
+
+    private static final String LIST = "/WEB-INF/jsp/admin/archive/list.jsp";
+    private static final String FORM = "/WEB-INF/jsp/admin/archive/form.jsp";
+
+    private Page<Archive> archives;
 
     @Inject
     private ArchiveService archiveService;
@@ -26,11 +32,13 @@ public class ArchiveActionBean extends BaseActionBean<Archive,Long> {
     }
 
     @DefaultHandler
-    public Resolution index(){
-        return  new ForwardResolution("/WEB-INF/jsp/admin/archive/browse.jsp");
+    public Resolution list() {
+        archiveService.findPage(new Archive());
+        return new ForwardResolution(LIST);
     }
 
-    public Resolution list(){
-        return null;
+    public Resolution form(){
+        return new ForwardResolution(FORM);
     }
+
 }

@@ -3,11 +3,9 @@ package k0n9.module.sys.web;
 import com.google.common.collect.Lists;
 import com.google.inject.Inject;
 import k0n9.common.entity.search.Searchable;
-import k0n9.common.plugins.mybatis.util.StringUtils;
 import k0n9.common.web.bind.PageableDefaults;
 import k0n9.common.web.bind.SearchableDefaults;
 import k0n9.module.sys.entity.Menu;
-import k0n9.module.sys.entity.Resource;
 import k0n9.module.sys.service.ResourceService;
 import net.sourceforge.stripes.action.ActionBean;
 import net.sourceforge.stripes.action.ActionBeanContext;
@@ -17,7 +15,6 @@ import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
 
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -26,6 +23,8 @@ import java.util.List;
  */
 @UrlBinding("/main")
 public class MainActionBean implements ActionBean {
+
+    private static final String MAIN = "/WEB-INF/index.jsp";
 
     private ActionBeanContext context;
 
@@ -51,8 +50,8 @@ public class MainActionBean implements ActionBean {
     @PageableDefaults(value = 100, pageNumber = 2, sort = {"a=desc", "b=desc"})
     @SearchableDefaults(value = {"age_lt=124", "name_like=abc", "id_in=1,2,3,4"}, merge = true)
     public Resolution main() {
-        menus = resourceService.findMenus();
-        return new ForwardResolution("/main.jsp");
+         setMenus(resourceService.findMenus());
+        return new ForwardResolution(MAIN);
     }
 
     public Searchable getSearchable() {

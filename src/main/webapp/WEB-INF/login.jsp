@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/WEB-INF/jsp/common/import-taglib.jsp"%>
-<stripes:layout-render name="/WEB-INF/jsp/layout/login.jsp">
-  <stripes:layout-component name="content">
+<s:layout-render name="/WEB-INF/jsp/layout/login.jsp">
+  <s:layout-component name="content">
     <div class="main-container">
       <div class="main-content">
         <div class="row">
@@ -24,9 +24,9 @@
                         <i class="ace-icon fa fa-coffee green"></i>
                         用户登录
                       </h4>
-                      <stripes:errors/>
+                      <s:errors/>
                       <div class="space-6"></div>
-                      <stripes:form  class="login-form" action="${ctx}/login" method="post">
+                      <s:form  class="login-form" action="${ctx}/login" method="post">
                         <fieldset>
                           <label class="block clearfix">
 														<span class="block input-icon input-icon-right">
@@ -53,7 +53,7 @@
                           </div>
                           <div class="space-4"></div>
                         </fieldset>
-                      </stripes:form>
+                      </s:form>
                     </div>
                     <div class="toolbar clearfix">
                       <div class="space-4"></div>
@@ -80,5 +80,5 @@
         </div>
       </div>
     </div>
-  </stripes:layout-component>
-</stripes:layout-render>
+  </s:layout-component>
+</s:layout-render>

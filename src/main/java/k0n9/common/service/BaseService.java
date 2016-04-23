@@ -70,11 +70,11 @@ public abstract class BaseService<T extends Persistable, ID extends Serializable
     /**
      * 查询所有数据列表
      *
-     * @param searchable
+     * @param entity
      * @return
      */
-    public List<T> findPage(Searchable searchable) {
-        return getEntityMapper().findPage(searchable);
+    public List<T> findPage(T entity) {
+        return getEntityMapper().findPage(entity);
     }
 
     /**
