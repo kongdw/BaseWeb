@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="k" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="stripes" uri="http://stripes.sourceforge.net/stripes-dynattr.tld" %>
 <stripes:useActionBean beanclass="k0n9.module.sys.web.MainActionBean" var="actionBean"/>
 <ul class="nav nav-list" id="menu">
   <c:forEach items="${actionBean.menus}" var="m">
