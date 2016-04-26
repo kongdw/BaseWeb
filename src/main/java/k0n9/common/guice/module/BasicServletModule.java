@@ -32,6 +32,7 @@ public class BasicServletModule extends ServletModule {
 				put("ActionResolver.Class", "k0n9.common.guice.controller.GuiceActionResolver");
                 put("ActionBeanPropertyBinder.Class","k0n9.common.plugins.stripes.controller.DefaultActionBeanPropertyBinder");
 				put("FileUpload.MaximumPostSize", "50mb");
+                put("LocalePicker.Locales","zh_CN:UTF-8");
 			}
 		});
 

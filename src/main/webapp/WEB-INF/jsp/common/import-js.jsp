@@ -13,6 +13,7 @@
 <script src="${ctx}/assets/js/jquery.address.js"></script>
 <script src="${ctx}/assets/js/ace.js"></script>
 <script src="${ctx}/assets/js/ace-elements.js"></script>
+<script type="text/javascript"> var ctx='${pageContext.request.contextPath}';</script>
 <!-- page specific plugin scripts -->
 <%--<!-- ace scripts -->--%>
 <%--<script src="${ctx}/assets/js/ace/elements.scroller.js"></script>--%>

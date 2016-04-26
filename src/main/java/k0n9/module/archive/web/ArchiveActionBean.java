@@ -1,7 +1,9 @@
 package k0n9.module.archive.web;
 
+import com.google.common.collect.Lists;
 import com.google.inject.Inject;
 import k0n9.common.plugins.mybatis.model.Page;
+import k0n9.common.plugins.stripes.action.JsonResolution;
 import k0n9.common.service.BaseService;
 import k0n9.common.web.BaseActionBean;
 import k0n9.module.archive.entity.Archive;
@@ -10,6 +12,8 @@ import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
+
+import java.util.List;
 
 /**
  * @author David Kong
@@ -31,9 +35,16 @@ public class ArchiveActionBean extends BaseActionBean<Archive, Long> {
         return archiveService;
     }
 
-    @DefaultHandler
     public Resolution list() {
-        archiveService.findPage(new Archive());
+        List<Archive> archiveList = archiveService.findPage(new Archive());
+        if(archiveList == null){
+            archiveList = Lists.newArrayList();
+        }
+        archives = new Page<Archive>(archiveList,archiveList.size());
+        return new JsonResolution(archives);
+    }
+    @DefaultHandler
+    public Resolution index(){
         return new ForwardResolution(LIST);
     }
 
