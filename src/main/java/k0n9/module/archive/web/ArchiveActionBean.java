@@ -1,19 +1,26 @@
 package k0n9.module.archive.web;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.gson.Gson;
 import com.google.inject.Inject;
 import k0n9.common.plugins.mybatis.model.Page;
 import k0n9.common.plugins.stripes.action.JsonResolution;
 import k0n9.common.service.BaseService;
 import k0n9.common.web.BaseActionBean;
 import k0n9.module.archive.entity.Archive;
+import k0n9.module.archive.entity.Category;
+import k0n9.module.archive.entity.Type;
 import k0n9.module.archive.service.ArchiveService;
+import k0n9.module.archive.service.TypeService;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author David Kong
@@ -25,10 +32,14 @@ public class ArchiveActionBean extends BaseActionBean<Archive, Long> {
     private static final String LIST = "/WEB-INF/jsp/admin/archive/list.jsp";
     private static final String FORM = "/WEB-INF/jsp/admin/archive/form.jsp";
 
+    private List<Type> typeList;
+
     private Page<Archive> archives;
 
     @Inject
     private ArchiveService archiveService;
+    @Inject
+    private TypeService typeService;
 
     @Override
     protected BaseService<Archive, Long> getEntityService() {
@@ -36,7 +47,9 @@ public class ArchiveActionBean extends BaseActionBean<Archive, Long> {
     }
 
     public Resolution list() {
+
         List<Archive> archiveList = archiveService.findPage(new Archive());
+
         if(archiveList == null){
             archiveList = Lists.newArrayList();
         }
@@ -52,4 +65,24 @@ public class ArchiveActionBean extends BaseActionBean<Archive, Long> {
         return new ForwardResolution(FORM);
     }
 
+    public String getTypeList() {
+        if(typeList == null || typeList.size() == 0){
+            typeList = typeService.findPage(new Type());
+        }
+        if(typeList == null || typeList.size() == 0){
+            return "";
+        }
+        Map<Long,String> maps = Maps.newHashMap();
+        Iterator<Type> iterator = typeList.iterator();
+        while (iterator.hasNext()){
+            Type type = iterator.next();
+            maps.put(type.getId(),type.getName());
+        }
+        return new Gson().toJson(maps).replace("{","").replace("}","").replace("'","")
+                .replace("\"","").replace(",",";");
+    }
+
+    public void setTypeList(List<Type> typeList) {
+        this.typeList = typeList;
+    }
 }
