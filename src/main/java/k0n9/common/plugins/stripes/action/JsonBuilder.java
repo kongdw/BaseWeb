@@ -48,7 +48,9 @@ public class JsonBuilder extends ObjectOutputBuilder<JsonBuilder> {
 
     @Override
     public void build(Writer writer) throws Exception {
-        Gson gson = new GsonBuilder().setExclusionStrategies(new JsonExclusionStrategy()).create();
+        GsonBuilder builder = new GsonBuilder().setExclusionStrategies(new JsonExclusionStrategy());
+        builder.setDateFormat("yyyy-MM-dd HH:mm:ss");
+        Gson gson = builder.create();
         JsonParser jsonParser = new JsonParser();
         JsonElement jsonElement = jsonParser.parse(gson.toJson(getRootObject()));
         JsonWriter jsonWriter = gson.newJsonWriter(writer);
