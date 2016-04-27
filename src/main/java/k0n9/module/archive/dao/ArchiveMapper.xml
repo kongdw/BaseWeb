@@ -36,7 +36,14 @@
         WHERE id = #{id}
     </select>
 
-    <select id="findPage" resultType="Archive">
+    <select id="findByPage" resultType="Archive">
+        SELECT
+        <include refid="selectColumns"/>
+        FROM ams_archive
+        ORDER BY id DESC
+    </select>
+
+    <select id="findByList" resultType="Archive">
         SELECT
         <include refid="selectColumns"/>
         FROM ams_archive

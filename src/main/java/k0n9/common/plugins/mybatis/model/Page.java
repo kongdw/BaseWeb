@@ -11,13 +11,11 @@ import java.util.List;
 public class Page<E> {
 
     private final List<E> data = new ArrayList<E>();
-    private final long recordsTotal;
-    private long recordsFiltered;
-
+    private final long totalElements;//记录条数
+    private long totalPages;//总页数
     public Page(Collection<? extends E> content, long recordsTotal) {
         this.data.addAll(content);
-        this.recordsTotal = recordsTotal;
-        this.recordsFiltered = recordsTotal;
+        this.totalElements = recordsTotal;
     }
 
     public List<E> getData() {
@@ -25,14 +23,8 @@ public class Page<E> {
     }
 
     public long getRecordsTotal() {
-        return recordsTotal;
+        return totalElements;
     }
 
-    public long getRecordsFiltered() {
-        return recordsFiltered;
-    }
 
-    public void setRecordsFiltered(long recordsFiltered) {
-        this.recordsFiltered = recordsFiltered;
-    }
 }

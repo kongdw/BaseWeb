@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="k0n9.module.archive.dao.TypeMapper">
+<mapper namespace="k0n9.module.archive.dao.DeadLineMapper">
 
     <cache/>
 
@@ -14,31 +14,31 @@
     <sql id="Join">
     </sql>
 
-    <select id="fetch" resultType="Type">
+    <select id="fetch" resultType="DeadLine">
         SELECT
         <include refid="selectColumns"/>
-        FROM ams_type
+        FROM ams_deadline
         WHERE id = #{id}
     </select>
 
-    <select id="findByPage" resultType="Type">
+    <select id="findByPage" resultType="DeadLine">
         SELECT
         <include refid="selectColumns"/>
-        FROM ams_type
+        FROM ams_deadline
         ORDER BY weight DESC
     </select>
 
-    <select id="findByList" resultType="Type">
+    <select id="findByList" resultType="DeadLine">
         SELECT
         <include refid="selectColumns"/>
-        FROM ams_type
+        FROM ams_deadline
         ORDER BY weight DESC
     </select>
 
-    <select id="findByIds" resultType="Type">
+    <select id="findByIds" resultType="DeadLine">
         SELECT
         <include refid="selectColumns"/>
-        FROM ams_type r
+        FROM ams_deadline r
         WHERE id in
         <foreach collection="array" item="id" open="(" separator="," close=")">
             #{id}
@@ -46,8 +46,8 @@
         ORDER BY weight DESC
     </select>
 
-    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="Type">
-		INSERT INTO ams_type (
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="DeadLine">
+		INSERT INTO ams_deadline (
             name,
             weight,
             is_show
@@ -58,8 +58,8 @@
 		)
 	</insert>
 
-    <update id="update" parameterType="Type">
-		UPDATE ams_type SET
+    <update id="update" parameterType="DeadLine">
+		UPDATE ams_deadline SET
 		    name=#{name},
             weight=#{weight},
             is_show=#{isShow}
@@ -67,11 +67,11 @@
 	</update>
 
     <delete id="delete">
-        DELETE FROM ams_type WHERE id=#{id}
+        DELETE FROM ams_deadline WHERE id=#{id}
     </delete>
 
     <delete id="deleteByIds">
-        DELETE FROM ams_type WHERE id in
+        DELETE FROM ams_deadline WHERE id in
         <foreach collection="array" index="i" item="id" open="(" separator="," close=")">
             #{id}
         </foreach>

@@ -65,7 +65,7 @@ public interface BaseMapper<T, ID extends Serializable> {
      * @param entity 查询条件
      * @return 满足查询条件的集合
      */
-    List<T> findPage(T entity);
+    List<T> findByPage(T entity);
 
     /**
      * 查询所有数据列表
@@ -73,7 +73,7 @@ public interface BaseMapper<T, ID extends Serializable> {
      * @param entity 查询条件
      * @return 满足查询条件的集合
      */
-    List<T> findList(T entity);
+    List<T> findByList(T entity);
 
     /**
      * 查询ID数组

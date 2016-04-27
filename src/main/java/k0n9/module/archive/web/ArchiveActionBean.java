@@ -9,7 +9,6 @@ import k0n9.common.plugins.stripes.action.JsonResolution;
 import k0n9.common.service.BaseService;
 import k0n9.common.web.BaseActionBean;
 import k0n9.module.archive.entity.Archive;
-import k0n9.module.archive.entity.Category;
 import k0n9.module.archive.entity.Type;
 import k0n9.module.archive.service.ArchiveService;
 import k0n9.module.archive.service.TypeService;
@@ -18,7 +17,6 @@ import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -48,7 +46,7 @@ public class ArchiveActionBean extends BaseActionBean<Archive, Long> {
 
     public Resolution list() {
 
-        List<Archive> archiveList = archiveService.findPage(new Archive());
+        List<Archive> archiveList = archiveService.findByPage(new Archive());
 
         if(archiveList == null){
             archiveList = Lists.newArrayList();
@@ -66,23 +64,18 @@ public class ArchiveActionBean extends BaseActionBean<Archive, Long> {
     }
 
     public String getTypeList() {
+        Type searchEntity = new Type();
+        searchEntity.setIsShow(Boolean.TRUE);
         if(typeList == null || typeList.size() == 0){
-            typeList = typeService.findPage(new Type());
+            typeList = typeService.findByList(searchEntity);
         }
         if(typeList == null || typeList.size() == 0){
-            return "";
+            return "\"\"";
         }
         Map<Long,String> maps = Maps.newHashMap();
-        Iterator<Type> iterator = typeList.iterator();
-        while (iterator.hasNext()){
-            Type type = iterator.next();
-            maps.put(type.getId(),type.getName());
+        for (Type type : typeList) {
+            maps.put(type.getId(), type.getName());
         }
-        return new Gson().toJson(maps).replace("{","").replace("}","").replace("'","")
-                .replace("\"","").replace(",",";");
-    }
-
-    public void setTypeList(List<Type> typeList) {
-        this.typeList = typeList;
+        return new Gson().toJson(maps);
     }
 }
