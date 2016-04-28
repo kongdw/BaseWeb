@@ -11,6 +11,8 @@
 <script src="${ctx}/assets/js/jquery.layout-latest.js"></script>
 <script src="${ctx}/assets/js/jquery-ui.js"></script>
 <script src="${ctx}/assets/js/bootstrap.js"></script>
+<script src="${ctx}/assets/js/jquery.browser.js"></script>
+<script src="${ctx}/assets/js/jquery-iframe-auto-height.js"></script>
 <script src="${ctx}/assets/js/jquery.address.js"></script>
 <script src="${ctx}/assets/js/ace.js"></script>
 <script src="${ctx}/assets/js/ace-elements.js"></script>
