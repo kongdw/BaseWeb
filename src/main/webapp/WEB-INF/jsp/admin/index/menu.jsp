@@ -1,6 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="/WEB-INF/jsp/common/import-taglib.jsp"%>
-<s:useActionBean beanclass="k0n9.module.sys.web.MainActionBean" var="actionBean"/>
 <ul class="nav nav-list" id="menu">
   <c:forEach items="${actionBean.menus}" var="m">
     <c:choose>
@@ -21,7 +20,7 @@
       </c:when>
       <c:otherwise>
         <li>
-          <a href="#page/${m.url}" data-url="page${m.url}">
+          <a href="${m.url}">
             <i class="menu-icon fa <c:choose><c:when test="${not empty m.icon}">${m.icon}</c:when><c:otherwise>fa-caret-right</c:otherwise></c:choose>"></i>
             <span class="menu-text">${m.name}</span>
           </a>

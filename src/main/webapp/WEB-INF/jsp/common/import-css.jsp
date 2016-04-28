@@ -1,7 +1,7 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!-- bootstrap & fontawesome -->
 <link rel="stylesheet" href="${ctx}/assets/css/bootstrap.css" />
 <link rel="stylesheet" href="${ctx}/assets/css/font-awesome.css" />
+<link rel="stylesheet" href="${ctx}/assets/css/jquery-ui.css" />
 
 <!-- page specific plugin styles -->
 

@@ -76,6 +76,7 @@ public abstract class BaseService<T extends Persistable, ID extends Serializable
         return getEntityMapper().findByPage(entity);
     }
 
+
     public List<T> findByList(T entity){
         return getEntityMapper().findByList(entity);
     }

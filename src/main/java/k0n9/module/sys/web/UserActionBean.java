@@ -3,7 +3,7 @@ package k0n9.module.sys.web;
 import com.google.inject.Inject;
 import k0n9.common.plugins.stripes.action.JsonResolution;
 import k0n9.common.service.BaseService;
-import k0n9.common.web.BaseActionBean;
+import k0n9.common.web.CRUDActionBean;
 import k0n9.module.sys.entity.User;
 import k0n9.module.sys.service.UserService;
 import net.sourceforge.stripes.action.DefaultHandler;
@@ -20,10 +20,10 @@ import java.util.List;
  * @version 1.0
  */
 @UrlBinding("/user")
-public class UserActionBean extends BaseActionBean<User,Long> {
+public class UserActionBean extends CRUDActionBean<User,Long> {
 
     private static final String LIST_FORWARD = "/WEB-INF/jsp/admin/user/userList.jsp";
-    private static final String FORM_FORWARD = "/WEB-INF/jsp/admin/user/form.jsp";
+    private static final String FORM_FORWARD = "/WEB-INF/jsp/admin/user/editForm.jsp";
 
     private UserService userService;
 

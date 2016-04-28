@@ -6,7 +6,7 @@
 <c:choose>
   <c:when test="${!menu.hasChildren}">
     <li>
-      <a href="#page<%=menuUrl(request, menu.getUrl())%>" data-url="page<%=menuUrl(request, menu.getUrl())%>">
+      <a href="<%=menuUrl(request, menu.getUrl())%>">
         <i class="menu-icon fa <c:choose><c:when test="${not empty menu.icon}">${menu.icon}</c:when><c:otherwise>fa-caret-right</c:otherwise></c:choose>"></i>
         <span class="menu-text">${menu.name}</span>
         <b class="arrow"></b>
