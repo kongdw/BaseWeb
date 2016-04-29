@@ -5,7 +5,6 @@ $.app = {
     /**初始化主页 layout，菜单，tab*/
     initIndex: function () {
         $.menus.initMenu();
-        $.layouts.initLayout();
         $.tabs.initTab();
         $.app.initCommonBtn();
 
@@ -401,7 +400,7 @@ $.app = {
             message = "装载中...";
         }
 
-        message = '<img src="' + ctx + '/static/img/loading.gif" ' + (isSmall ? "width='20px'" : "") + '/> ' + message;
+        message = '<img src="' + ctx + '/assets/img/loading.gif" ' + (isSmall ? "width='20px'" : "") + '/> ' + message;
         if (!isSmall) {
             message = "<h4>" + message + "</h4>";
         }
@@ -916,64 +915,6 @@ $.app = {
 
 };
 
-$.layouts = {
-    layout: null,
-    /**初始化布局*/
-    initLayout: function () {
-        function resizePanel(panelName, panelElement, panelState, panelOptions, layoutName) {
-            var tabul = $(".tabs-fix-top");
-            //if (panelName == 'north') {
-            //    var top = 0;
-            //    if ($("html").hasClass("ie")) {
-            //        top = panelElement.height() - 33;
-            //
-            //    } else {
-            //        top = panelElement.height() - 30;
-            //    }
-            //    if (panelState.isClosed) {
-            //        top = -58;
-            //    }
-            //    tabul.css("top", top);
-            //}
-
-            if (panelName == "center") {
-                tabul.find(".ul-wrapper").andSelf().width(panelState.layoutWidth);
-                $.tabs.initTabScrollHideOrShowMoveBtn();
-            }
-
-
-        }
-
-        this.layout = $('.index-panel').layout(
-            {
-                west__size: 210
-                , south__size: 30
-                , west__spacing_closed: 20
-                , west__togglerLength_closed: 100
-                , west__togglerContent_closed: "菜<BR>单"
-                , togglerTip_closed: "打开"
-                , togglerTip_open: "关闭"
-                , sliderTip: "滑动打开"
-                , resizerTip: "调整大小"
-                , onhide: resizePanel
-                , onshow: resizePanel
-                , onopen: resizePanel
-                , onclose: resizePanel
-                , onresize: resizePanel
-                , center__maskContents: true // IMPORTANT - enable iframe masking
-                , north: {
-                togglerLength_open: 0
-                , resizable: false
-                , size: 95
-            },
-                south: {
-                    resizable: false
-                }
-            }
-        );
-    }
-}
-
 $.menus = {
     /**初始化菜单*/
     initMenu: function () {
@@ -982,17 +923,22 @@ $.menus = {
             var a = $(this);
             var title = a.text();
             var href = a.attr("href");
-            //a.attr("href", "#");
+            a.attr("href", "#");
             if (href == "#" || href == '') {
                 return;
             }
             var active = function (a, forceRefresh) {
-                menus.find("a").closest("li").removeClass("active");
-                menus.find("ul.submenu").hide();
-                a.closest("li").addClass("active");
-                var $parentLi = a.closest("li").parents("li");
-                $parentLi.find("ul.submenu").show();
-                $parentLi.addClass("active");
+                console.log(href)
+                menus.find(".active").each(function () {
+                    var $class = 'active open';
+                    $(this).removeClass($class);
+                    $(this).find(' > .submenu').css('display', '');
+                });
+                a.closest('li').addClass('active').parents('.nav li').addClass('active open');
+                menus.closest('.sidebar[data-sidebar-scroll=true]').each(function () {
+                    var $this = $(this);
+                    $this.ace_sidebar_scroll('reset');
+                });
                 var oldPanelIndex = a.data("panelIndex");
                 var activeMenuCallback = function (panelIndex) {
                     a.data("panelIndex", panelIndex);
@@ -1000,8 +946,7 @@ $.menus = {
                 }
                 $.tabs.activeTab(oldPanelIndex, title, href, forceRefresh, activeMenuCallback);
                 return false;
-            }
-
+            };
             a.closest("li")
                 .click(function () {
                     active(a, false);
@@ -1034,7 +979,7 @@ $.tabs = {
             }
         }
 
-        var tabs = $(".tabs-bar").tabs({
+        var tabs = $("#page-tabs").tabs({
             beforeActivate: function (event, ui) {
                 setTimeout(function () {
                     var tabs = $.tabs.tabs;

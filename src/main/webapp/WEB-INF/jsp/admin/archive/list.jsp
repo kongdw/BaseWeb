@@ -2,18 +2,13 @@
 <%@include file="/WEB-INF/jsp/common/import-taglib.jsp" %>
 <k:header title="档案管理"/>
 <style type="text/css">
-  body{
+  body {
     background-color: #fff;
   }
 </style>
-<div class="row">
-  <div class="col-sm-12">
-    <%@include file="searchForm.jsp" %>
-  </div>
-</div>
-<div class="row">
-  <div class="col-sm-12">
-    <%@include file="listTable.jsp" %>
-  </div>
+<div class="form-inline no-footer">
+  <%@include file="searchForm.jsp" %>
+  <div class="space-4"></div>
+  <%@include file="listTable.jsp" %>
 </div>
 <k:footer/>

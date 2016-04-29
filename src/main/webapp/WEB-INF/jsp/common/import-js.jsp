@@ -8,14 +8,14 @@
 <script type="text/javascript">
     if('ontouchstart' in document.documentElement) document.write("<script src='${ctx}/assets/js/jquery.mobile.custom.js'>"+"<"+"/script>");
 </script>
-<script src="${ctx}/assets/js/jquery.layout-latest.js"></script>
 <script src="${ctx}/assets/js/jquery-ui.js"></script>
 <script src="${ctx}/assets/js/bootstrap.js"></script>
+<script src="${ctx}/assets/js/jquery.blockUI.js"></script>
 <script src="${ctx}/assets/js/jquery.browser.js"></script>
 <script src="${ctx}/assets/js/jquery-iframe-auto-height.js"></script>
-<script src="${ctx}/assets/js/jquery.address.js"></script>
 <script src="${ctx}/assets/js/ace.js"></script>
 <script src="${ctx}/assets/js/ace-elements.js"></script>
+<script src="${ctx}/assets/js/application.js"></script>
 
 <script type="text/javascript"> var ctx='${pageContext.request.contextPath}';</script>
 <!-- page specific plugin scripts -->

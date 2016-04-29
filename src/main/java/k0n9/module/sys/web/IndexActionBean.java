@@ -24,8 +24,6 @@ public class IndexActionBean extends BaseActionBean {
     private static final String INDEX = "/WEB-INF/jsp/admin/index/index.jsp";
     private static final String WELCOME = "/WEB-INF/jsp/admin/index/welcome.jsp";
 
-
-
     @Inject
     private ResourceService resourceService;
 
