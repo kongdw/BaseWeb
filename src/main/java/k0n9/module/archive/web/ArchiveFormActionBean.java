@@ -1,24 +1,17 @@
 package k0n9.module.archive.web;
 
 import k0n9.module.archive.entity.Archive;
-import net.sourceforge.stripes.action.DefaultHandler;
-import net.sourceforge.stripes.action.DontValidate;
-import net.sourceforge.stripes.action.ForwardResolution;
-import net.sourceforge.stripes.action.RedirectResolution;
-import net.sourceforge.stripes.action.Resolution;
-import net.sourceforge.stripes.action.SimpleMessage;
-import net.sourceforge.stripes.action.UrlBinding;
+import net.sourceforge.stripes.action.*;
 
 /**
  * @author David Kong
  * @version 1.0
  */
-@UrlBinding("/archive/browse/save")
+@UrlBinding("/archive/form")
 public class ArchiveFormActionBean extends ArchiveBaseActionBean {
 
     private static final String FORM = "/WEB-INF/jsp/admin/archive/editForm.jsp";
 
-    @DefaultHandler
     public Resolution form() {
         return new ForwardResolution(FORM);
     }

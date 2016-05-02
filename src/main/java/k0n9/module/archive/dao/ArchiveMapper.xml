@@ -5,55 +5,71 @@
     <cache/>
 
     <sql id="selectColumns">
-        id,
-        title,
-        type_id as "type.id",
-        category_id as "category.id",
-        deadline_id as "deadline.id",
-        doc_class_id as "docClass.id",
-        year,
-        doc_no,
-        doc_date,
-        forcer_no,
-        box_no,
-        fonds_no,
-        part_num,
-        page_num,
-        responsible,
-        dept,
-        privacy_level_id as "privacyLevel.id",
-        urgent_level_id as "urgentLevel.id",
-        remark
+        a.id,
+        a.title,
+        t.id as "type.id",
+        t.name as "type.name",
+        cg.id as "category.id",
+        cg.name as "category.name",
+        dl.id as "deadline.id",
+        dl.name as "deadline.name",
+        dc.id as "docClass.id",
+        dc.name as "docClass.name",
+        a.year,
+        a.doc_no,
+        a.doc_date,
+        a.forcer_no,
+        a.box_no,
+        a.fonds_no,
+        a.part_num,
+        a.page_num,
+        a.responsible,
+        a.dept,
+        pl.id as "privacyLevel.id",
+        pl.name as "privacyLevel.name",
+        ul.id as "urgentLevel.id",
+        ul.name as "urgentLevel.name",
+        a.remark
     </sql>
 
     <sql id="Join">
+        INNER JOIN  ams_type t ON a.type_id = t.id
+        INNER JOIN  ams_category cg on a.category_id = cg.id
+        INNER JOIN  ams_deadline dl on a.deadline_id = dl.id
+        INNER JOIN ams_doc_class dc on a.doc_class_id = dc.id
+        INNER JOIN ams_privacy_level pl on a.privacy_level_id = pl.id
+        INNER JOIN ams_urgent_level ul on a.urgent_level_id = ul.id
     </sql>
 
     <select id="fetch" resultType="Archive">
         SELECT
         <include refid="selectColumns"/>
-        FROM ams_archive
-        WHERE id = #{id}
+        FROM ams_archive a
+        <include refid="Join"/>
+        WHERE a.id = #{id}
     </select>
 
     <select id="findByPage" resultType="Archive">
         SELECT
         <include refid="selectColumns"/>
-        FROM ams_archive
+        FROM ams_archive a
+        <include refid="Join"/>
         ORDER BY id DESC
     </select>
 
     <select id="findByList" resultType="Archive">
         SELECT
         <include refid="selectColumns"/>
-        FROM ams_archive
+        FROM ams_archive a
+        <include refid="Join"/>
         ORDER BY id DESC
     </select>
 
     <select id="findByIds" resultType="Archive">
         SELECT
         <include refid="selectColumns"/>
-        FROM ams_archive r
+        FROM ams_archive a
+        <include refid="Join"/>
         WHERE id in
         <foreach collection="array" item="id" open="(" separator="," close=")">
             #{id}

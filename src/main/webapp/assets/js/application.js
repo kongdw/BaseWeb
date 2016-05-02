@@ -346,9 +346,7 @@ $.app = {
                         data.content = data.content.replace("{ctx}", ctx);
                     }
                 }
-
                 initMenu(dataList, hasUnread);
-
             }
         };
     },
@@ -370,10 +368,14 @@ $.app = {
             }
 
             $.app.waiting(loadingMessage);
-            iframe.prop("src", url).one("load", function () {
-                $.app.activeIframe(panelId, iframe);
-                $.app.waitingOver();
-            });
+            iframe.prop("src",url);
+            iframe.iframeAutoHeight({minHeight: 500, heightOffset: 10, animate: true, resetToMinHeight: true,callback:$.app.activeIframe(panelId, iframe)});
+            $.app.waitingOver();
+            // iframe.prop("src", url).one("load", function () {
+            //     $.app.activeIframe(panelId, iframe);
+            //     iframe.iframeAutoHeight({minHeight: 500, heightOffset: 10, animate: true, resetToMinHeight: true});
+            //     $.app.waitingOver();
+            // });
 
         } else {
             $.app.activeIframe(panelId, iframe);
@@ -384,15 +386,22 @@ $.app = {
         if (!iframe) {
             iframe = $("#iframe-" + panelId);
         }
-        var layout = $.layouts.layout;
-        if (layout.panes.center.prop("id") == iframe.prop("id")) {
-            return;
-        }
-        layout.panes.center.hide();
-        layout.panes.center = iframe;
-        layout.panes.center.show();
-        layout.resizeAll();
-        $.tabs.initTabScrollHideOrShowMoveBtn(panelId);
+        var iframeContainer = $('#iframe-container');
+        iframeContainer.find('iframe').each(function () {
+            $(this).hide();
+        });
+        // iframeContainer.append(iframe);
+        iframe.show();
+
+        // var layout = $.layouts.layout;
+        // if (layout.panes.center.prop("id") == iframe.prop("id")) {
+        //     return;
+        // }
+        // layout.panes.center.hide();
+        // layout.panes.center = iframe;
+        // layout.panes.center.show();
+        // layout.resizeAll();
+        // $.tabs.initTabScrollHideOrShowMoveBtn(panelId);
     },
 
     waiting: function (message, isSmall) {
@@ -989,7 +998,6 @@ $.tabs = {
             },
             activate: function (event, ui) {
                 setTimeout(function () {
-                    var tabs = $.tabs.tabs;
                     var newPanelId = ui.newPanel.prop("id");
                     activeMenu(newPanelId);
                     $.app.activeIframe(newPanelId);
@@ -997,13 +1005,14 @@ $.tabs = {
             }
         });
         $.tabs.tabs = tabs;
-        tabs.delegate("span.icon-close", "click", function () {
+
+        tabs.delegate("span.fa-close", "click", function () {
             var panelId = $(this).closest("li").remove().attr("aria-controls");
             setTimeout(function () {
                 $.tabs.removeTab(panelId);
             }, 0);
         });
-        tabs.delegate("span.icon-refresh", "click", function () {
+        tabs.delegate("span.fa-refresh", "click", function () {
             var panelId = $(this).closest("li").attr("aria-controls");
             setTimeout(function () {
                 $.tabs.activeTab(panelId, null, null, true);
@@ -1027,12 +1036,12 @@ $.tabs = {
         var panel = $("#" + panelId);
         var iframe = $("#iframe-" + panelId);
 
-        var currentMenu = $("#menu-" + panelId.replace("tabs-", ""));
-        if (currentMenu.length) {
-            currentMenu.attr("id", "");
-            currentMenu.attr("panelIndex", "");
-            $("#menu .li-wrapper.active").removeClass("active");
-        }
+        // var currentMenu = $("#menu-" + panelId.replace("tabs-", ""));
+        // if (currentMenu.length) {
+        //     currentMenu.attr("id", "");
+        //     currentMenu.attr("panelIndex", "");
+        //     $("#menu .li-wrapper.active").removeClass("active");
+        // }
 
         tabs.tabs("option", "active", tabs.find(".ui-tabs-panel").size());
         tabs.tabs("refresh");
@@ -1072,7 +1081,7 @@ $.tabs = {
 
         var newPanelIndex = panelIndex || $.tabs.maxTabIndex++ || 1;
         var newPanelId = "tabs-" + newPanelIndex;
-        var tabTemplate = "<li><a href='#{href}'>{label}</a> <span class='menu icon-close' role='presentation'title='关闭'></span><br/><span class='menu icon-refresh' role='presentation' title='刷新'></span></li>";
+        var tabTemplate = "<li><a href='#{href}'>{label}</a> <span class='menu ace-icon fa fa-close' data-rel='tooltip' role='presentation'title='关闭'></span><br/><span class='menu ace-icon fa fa-refresh' data-rel='tooltip' role='presentation' title='刷新'></span></li>";
         var li = $(tabTemplate.replace(/\{href\}/g, newPanelId).replace(/\{label\}/g, title));
 
         tabs.find("ul.ui-tabs-nav").append(li);
@@ -1082,7 +1091,6 @@ $.tabs = {
 
         var newPanel = $("#" + newPanelId);
         newPanel.data("index", newPanelIndex);
-
         return newPanel;
     },
     /**
@@ -1121,7 +1129,7 @@ $.tabs = {
     },
 
     initTabScrollHideOrShowMoveBtn: function (panelId) {
-        var $ulWrapper = $(".tabs-bar .ul-wrapper");
+        var $ulWrapper = $("#page-tabs .ul-wrapper");
         var $lastLI = $ulWrapper.find("ul li:last");
         var $firstLI = $ulWrapper.find("ul li:first");
 
@@ -1133,8 +1141,8 @@ $.tabs = {
             var lastLILeftPos = lastLIOffsetLeft + $lastLI.width();
             var firstLIOffsetLeft = $firstLI.offset().left;
 
-            var $leftBtn = $(".tabs-bar .fa-chevron-left");
-            var $rightBtn = $(".tabs-bar .fa-chevron-right");
+            var $leftBtn = $("#page-tabs .fa-chevron-left");
+            var $rightBtn = $("#page-tabs .fa-chevron-right");
 
             if (ulWapperOffsetLeft == firstLIOffsetLeft) {
                 $leftBtn.hide();
@@ -1150,7 +1158,7 @@ $.tabs = {
 
         if (panelId) {
 
-            var $li = $(".tabs-bar").find("li[aria-labelledby='" + $("#" + panelId).attr("aria-labelledby") + "']");
+            var $li = $("#page-tabs").find("li[aria-labelledby='" + $("#" + panelId).attr("aria-labelledby") + "']");
 
             var liOffsetLeft = $li.offset().left;
             var liLeftPos = liOffsetLeft + $li.width();
@@ -1183,7 +1191,7 @@ $.tabs = {
     initTabScroll: function () {
         var move = function (step) {
             return function () {
-                var $ulWrapper = $(".tabs-bar .ul-wrapper");
+                var $ulWrapper = $("#page-tabs .ul-wrapper");
                 var $lastLI = $ulWrapper.find("ul li:last");
 
                 var leftPos = $ulWrapper.scrollLeft() + step;
@@ -1218,12 +1226,12 @@ $.tabs = {
             };
         };
 
-        $(".tabs-bar .fa-chevron-left").click(function () {
+        $("#page-tabs .fa-chevron-left").click(function () {
             setTimeout(function () {
                 move(-200)()
             }, 0);
         });
-        $(".tabs-bar .fa-chevron-right").click(function () {
+        $("#page-tabs .fa-chevron-right").click(function () {
             setTimeout(function () {
                 move(200)()
             }, 0);
@@ -1239,7 +1247,7 @@ $.tabs = {
         //调用这个方法后将禁止系统的右键菜单
         $(document).bind('contextmenu', function (e) {
             var target = $(e.target);
-            var clickTab = target.closest(".tabs-bar").length && target.is(".ui-tabs-anchor");
+            var clickTab = target.closest("#page-tabs").length && target.is(".ui-tabs-anchor");
 
             if (clickTab && target.attr("href") == '#tabs-0') {
                 return true;
@@ -1892,30 +1900,29 @@ $.table = {
 
         var sortURL = $.table.tableURL(table);
 
-        var sortBtnTemplate = '<div class="sort" style="display: inline;">&nbsp;<a class="{sort-icon}" href="#" title="排序" style="text-decoration: none;"></a></div>';
         table.find("[sort]").each(function () {
             var th = $(this);
             var sortPropertyName = prefix + "sort." + th.attr("sort");
-            var sortBtnStr = null;
+            var sortClass = null;
             var matchResult = sortURL.match(new RegExp(sortPropertyName + "=(asc|desc)", "gi"));
             var order = null;
             if (matchResult) {
                 order = RegExp.$1;
                 if (order == 'asc') {
-                    sortBtnStr = sortBtnTemplate.replace("{sort-icon}", "sort-hover fa fa-arrow-up");
+                    sortClass = 'sorting_asc'
                 } else if (order == 'desc') {
-                    sortBtnStr = sortBtnTemplate.replace("{sort-icon}", "sort-hover fa fa-arrow-down");
+                    sortClass = 'sorting_desc'
                 }
             }
-            if (sortBtnStr == null) {
-                sortBtnStr = sortBtnTemplate.replace("{sort-icon}", "fa fa-arrow-down");
+            if (sortClass == null) {
+                sortClass = 'sorting';
             }
-            th.wrapInner("<div class='sort-title' style='display: inline'></div>").append($(sortBtnStr));
+            th.addClass(sortClass);
 
             //当前排序
             th.prop("order", order);//设置当前的排序 方便可移动表格
 
-            th.addClass("sort-th").click(function () {
+            th.click(function () {
                 sortURL = $.table.tableURL(table);
                 //清空上次排序
                 sortURL = $.table.removeSortParam(sortURL);
@@ -2033,7 +2040,7 @@ $.table = {
     }
     ,
     /**
-     * 获取表格对于的url
+     * 获取表格对应的url
      * @param table
      * @return {*}
      */

@@ -106,7 +106,7 @@
         <%@include file="/WEB-INF/jsp/admin/index/settings.jsp" %>
         <div class="row">
           <div id="iframe-container" class="col-xs-12">
-            <iframe id="iframe-tabs-0" frameborder="0" style="width: 100%" scrolling="no" src="${ctx}/index/welcome"></iframe>
+            <iframe id="iframe-tabs-0" tabs=true frameborder="0" style="width: 100%" scrolling="no" src="${ctx}/index/welcome"></iframe>
             <%--<iframe id="iframe-tabs-0" frameborder="0" style="width: 100%" scrolling="no" src="${ctx}/archive/browse"></iframe>--%>
           </div>
         </div>
@@ -121,6 +121,7 @@
     ace.demo.init();
     $.app.initIndex();
     $('#iframe-tabs-0').iframeAutoHeight({minHeight: 500, heightOffset: 10, animate: true, resetToMinHeight: true});
+
   })
 </script>
 

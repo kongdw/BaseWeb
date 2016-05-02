@@ -3,12 +3,7 @@ package k0n9.module.sys.web;
 import com.google.inject.Inject;
 import k0n9.common.web.BaseActionBean;
 import k0n9.module.sys.service.AuthService;
-import net.sourceforge.stripes.action.DefaultHandler;
-import net.sourceforge.stripes.action.ForwardResolution;
-import net.sourceforge.stripes.action.HandlesEvent;
-import net.sourceforge.stripes.action.RedirectResolution;
-import net.sourceforge.stripes.action.Resolution;
-import net.sourceforge.stripes.action.UrlBinding;
+import net.sourceforge.stripes.action.*;
 import net.sourceforge.stripes.validation.LocalizableError;
 import net.sourceforge.stripes.validation.Validate;
 import net.sourceforge.stripes.validation.ValidationError;
@@ -32,11 +27,11 @@ public class LoginActionBean extends BaseActionBean {
     private String targetUrl;
 
     @DefaultHandler
-    public Resolution showForm(){
+    @DontValidate
+    public Resolution view(){
         return new ForwardResolution(LOGIN_FORM);
     }
 
-    @HandlesEvent("logging")
     public Resolution login() {
         if (authService.login(username, password)) {
             if (this.targetUrl != null) {

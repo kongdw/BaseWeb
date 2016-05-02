@@ -9,10 +9,10 @@ import net.sourceforge.stripes.action.ActionBeanContext;
  */
 public abstract class BaseActionBean implements ActionBean {
 
-    private ActionBeanContext context;
+    private BaseActionBeanContext context;
 
     public void setContext(final ActionBeanContext context) {
-        this.context = context;
+        this.context = (BaseActionBeanContext) context;
     }
 
     public ActionBeanContext getContext() {

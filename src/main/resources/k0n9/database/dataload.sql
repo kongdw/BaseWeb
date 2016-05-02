@@ -9,7 +9,7 @@ INSERT INTO sys_permission (id,name,permission,description,is_show) VALUES (6,'�
 
 INSERT INTO SYS_RESOURCE (ID, NAME, IDENTITY, URL, PARENT_ID, PARENT_IDS, ICON, WEIGHT, IS_SHOW) VALUES (1,'资源','','',0,'0/','',1,TRUE );
 INSERT INTO SYS_RESOURCE (ID, NAME, IDENTITY, URL, PARENT_ID, PARENT_IDS, ICON, WEIGHT, IS_SHOW) VALUES (2,'档案管理','archive','',1,'0/1/','menu-icon fa fa-desktop',1,TRUE );
-INSERT INTO SYS_RESOURCE (ID, NAME, IDENTITY, URL, PARENT_ID, PARENT_IDS, ICON, WEIGHT, IS_SHOW) VALUES (3,'档案浏览','browse','/archive/browse',2,'0/1/2/','',1,TRUE );
+INSERT INTO SYS_RESOURCE (ID, NAME, IDENTITY, URL, PARENT_ID, PARENT_IDS, ICON, WEIGHT, IS_SHOW) VALUES (3,'档案浏览','browse','/archive/index',2,'0/1/2/','',1,TRUE );
 INSERT INTO SYS_RESOURCE (ID, NAME, IDENTITY, URL, PARENT_ID, PARENT_IDS, ICON, WEIGHT, IS_SHOW) VALUES (4,'我的借阅','borrow','/archive/borrow',2,'0/1/2/','',1,FALSE);
 INSERT INTO SYS_RESOURCE (ID, NAME, IDENTITY, URL, PARENT_ID, PARENT_IDS, ICON, WEIGHT, IS_SHOW) VALUES (5,'借阅历史','history','/archive/history',2,'0/1/2/','',1,FALSE);
 INSERT INTO SYS_RESOURCE (ID, NAME, IDENTITY, URL, PARENT_ID, PARENT_IDS, ICON, WEIGHT, IS_SHOW) VALUES (6,'借阅审核','audit','/archive/audit',2,'0/1/2/','',1,FALSE);

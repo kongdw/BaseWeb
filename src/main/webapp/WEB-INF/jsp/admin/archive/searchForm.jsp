@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div class="row">
   <div class="col-xs-12">
-    <form>
+    <form class="form-inline search-form">
       <label class="inline">
         <span class="lbl">年度:</span>
         <input type="text" class="input-small" placeholder="年度，数字类型">

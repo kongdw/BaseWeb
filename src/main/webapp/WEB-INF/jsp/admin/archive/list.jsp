@@ -6,7 +6,7 @@
     background-color: #fff;
   }
 </style>
-<div class="form-inline no-footer">
+<div class="form-inline no-footer" data-table="table">
   <%@include file="searchForm.jsp" %>
   <div class="space-4"></div>
   <%@include file="listTable.jsp" %>

@@ -39,19 +39,19 @@
                     </h4>
                     <s:errors/>
                     <div class="space-6"></div>
-                    <s:form  class="login-form" action="${ctx}/login/logging" method="post">
+                    <s:form  class="login-form" action="${ctx}/login" method="post" focus="username">
                       <fieldset>
                         <label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input name="username" type="text" class="form-control" placeholder="用户名" />
-															<i class="ace-icon fa fa-user"></i>
-														</span>
+                          <span class="block input-icon input-icon-right">
+                              <s:text name="username" type="text" class="form-control" placeholder="用户名" />
+                              <i class="ace-icon fa fa-user"></i>
+                          </span>
                         </label>
                         <label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input name="password" type="password" class="form-control" placeholder="密码" />
-															<i class="ace-icon fa fa-lock"></i>
-														</span>
+                          <span class="block input-icon input-icon-right">
+                              <s:password name="password" type="password" class="form-control" placeholder="密码" />
+                              <i class="ace-icon fa fa-lock"></i>
+                          </span>
                         </label>
                         <div class="space"></div>
                         <div class="clearfix">
@@ -59,13 +59,11 @@
                             <input type="checkbox" class="ace" />
                             <span class="lbl"> 记住我</span>
                           </label>
-                          <button type="submit" class="width-35 pull-right btn btn-sm btn-primary">
-                            <i class="ace-icon fa fa-key"></i>
-                            <span class="bigger-110">登录</span>
-                          </button>
+                            <s:submit name="login" value="登录" class="width-35 pull-right btn btn-sm btn-primary"/>
                         </div>
                         <div class="space-4"></div>
                       </fieldset>
+                      <s:hidden name="targetUrl" />
                     </s:form>
                   </div>
                   <div class="toolbar clearfix">
