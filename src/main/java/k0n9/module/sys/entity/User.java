@@ -5,6 +5,7 @@ import k0n9.common.entity.BaseEntity;
 import k0n9.common.plugins.stripes.action.JsonIgnore;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * 用户
@@ -28,7 +29,7 @@ public class User extends BaseEntity<Long> {
     private Boolean isAdmin;
 
     @TableAlias("role")
-    private Role role;
+    private List<Role> roles;
 
     public Long getId() {
         return id;
@@ -110,11 +111,11 @@ public class User extends BaseEntity<Long> {
         this.isAdmin = isAdmin;
     }
 
-    public Role getRole() {
-        return role;
+    public List<Role> getRoles() {
+        return roles;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 }

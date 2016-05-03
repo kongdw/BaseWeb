@@ -19,6 +19,12 @@ public class Role extends BaseEntity<Long>{
     @JsonIgnore
     private boolean isShow;
 
+    public Role(){
+
+    }
+    public Role(String role){
+        this.role = role;
+    }
     @Override
     public void setId(Long id) {
         this.id = id;

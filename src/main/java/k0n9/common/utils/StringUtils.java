@@ -1,6 +1,6 @@
 package k0n9.common.utils;
 
-import org.apache.shiro.util.CollectionUtils;
+import org.apache.commons.collections.CollectionUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -21,10 +21,10 @@
       <ul class="nav ace-nav">
         <li class="light-blue">
           <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-            <img class="nav-user-photo" src="../assets/avatars/user.jpg" alt="Jason's Photo"/>
+            <img class="nav-user-photo" src="${ctx}/assets/avatars/avatar2.png"/>
 								<span class="user-info">
-									<small>Welcome,</small>
-									Jason
+									<small>欢迎,</small>
+									${user.username}
 								</span>
             <i class="ace-icon fa fa-caret-down"></i>
           </a>
@@ -32,23 +32,23 @@
             <li>
               <a href="#">
                 <i class="ace-icon fa fa-cog"></i>
-                Settings
+                设置
               </a>
             </li>
 
             <li>
               <a href="profile.html">
                 <i class="ace-icon fa fa-user"></i>
-                Profile
+                个人资料
               </a>
             </li>
 
             <li class="divider"></li>
 
             <li>
-              <a href="#">
+              <a href="${ctx}/logout">
                 <i class="ace-icon fa fa-power-off"></i>
-                Logout
+                退出
               </a>
             </li>
           </ul>
@@ -107,7 +107,6 @@
         <div class="row">
           <div id="iframe-container" class="col-xs-12">
             <iframe id="iframe-tabs-0" tabs=true frameborder="0" style="width: 100%" scrolling="no" src="${ctx}/index/welcome"></iframe>
-            <%--<iframe id="iframe-tabs-0" frameborder="0" style="width: 100%" scrolling="no" src="${ctx}/archive/browse"></iframe>--%>
           </div>
         </div>
       </div>
@@ -121,7 +120,6 @@
     ace.demo.init();
     $.app.initIndex();
     $('#iframe-tabs-0').iframeAutoHeight({minHeight: 500, heightOffset: 10, animate: true, resetToMinHeight: true});
-
   })
 </script>
 

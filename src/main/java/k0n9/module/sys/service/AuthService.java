@@ -18,4 +18,8 @@ public class AuthService {
         return user != null && Md5Utils.hash(password+user.getSalt()).equals(user.getPassword());
     }
 
+    public User findByUsername(String username){
+        return userService.fetchByUsername(username);
+    }
+
 }

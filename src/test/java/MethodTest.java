@@ -1,8 +1,11 @@
+import net.sourceforge.stripes.util.Base64;
 import org.apache.commons.lang3.reflect.MethodUtils;
 import org.mybatis.guice.transactional.Transactional;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 
 /**
@@ -16,7 +19,12 @@ public class MethodTest {
 
     }
 
-    public static void main(String[] args) throws NoSuchMethodException {
+    public static void main(String[] args) throws NoSuchMethodException, NoSuchAlgorithmException {
+        String password = "123456";
+        MessageDigest md = MessageDigest.getInstance("SHA-1");
+        byte[] bytes = md.digest(password.getBytes());
+        password =  Base64.encodeBytes(bytes);
+        System.out.println(password);
         Method[] methods = MethodUtils.getMethodsWithAnnotation(MethodTest.class, Transactional.class);
         for (Method method : methods) {
             System.out.println(String.format("Method Name is %s",method.getName()));

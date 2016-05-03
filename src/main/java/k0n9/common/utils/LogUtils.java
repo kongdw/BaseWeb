@@ -3,7 +3,6 @@ package k0n9.common.utils;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.gson.Gson;
-import org.apache.shiro.SecurityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,7 +31,7 @@ public abstract class LogUtils {
      * @param request
      */
     public static void logAccess(HttpServletRequest request) {
-        String username = getUsername();
+        String username = getUsername(request);
         String jsessionId = request.getRequestedSessionId();
         String ip = IpUtils.getIpAddr(request);
         String accept = request.getHeader("accept");
@@ -61,8 +60,8 @@ public abstract class LogUtils {
      * @param message
      * @param e
      */
-    public static void logError(String message, Throwable e) {
-        String username = getUsername();
+    public static void logError(String message, Throwable e,HttpServletRequest request) {
+        String username = getUsername(request);
         StringBuilder s = new StringBuilder();
         s.append(getBlock("exception"));
         s.append(getBlock(username));
@@ -77,7 +76,7 @@ public abstract class LogUtils {
      * @param request
      */
     public static void logPageError(HttpServletRequest request) {
-        String username = getUsername();
+        String username = getUsername(request);
 
         Integer statusCode = (Integer) request.getAttribute("javax.servlet.error.status_code");
         String message = (String) request.getAttribute("javax.servlet.error.message");
@@ -140,8 +139,8 @@ public abstract class LogUtils {
     }
 
 
-    protected static String getUsername() {
-        return (String) SecurityUtils.getSubject().getPrincipal();
+    protected static String getUsername(HttpServletRequest request) {
+        return (String) request.getSession().getAttribute("user") ;
     }
 
     public static Logger getAccessLog() {

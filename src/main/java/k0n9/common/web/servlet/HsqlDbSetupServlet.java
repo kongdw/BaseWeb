@@ -1,6 +1,7 @@
 package k0n9.common.web.servlet;
 
 import com.google.inject.Inject;
+import com.google.inject.name.Named;
 import org.apache.commons.io.IOUtils;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.jdbc.ScriptRunner;
@@ -21,42 +22,44 @@ public class HsqlDbSetupServlet extends HttpServlet {
 
     private SqlSessionManager sqlSessionManager;
 
-	@Inject
-	public HsqlDbSetupServlet(final SqlSessionManager sqlSessionManager) throws IOException {
-		this.sqlSessionManager = sqlSessionManager;
-		buildDatabase();
-	}
+    @Inject
+    public HsqlDbSetupServlet(final SqlSessionManager sqlSessionManager, @Named(value = "developer") Boolean developer) throws IOException {
+        this.sqlSessionManager = sqlSessionManager;
+        if (developer) {
+            buildDatabase();
+        }
+    }
 
-	private void buildDatabase() throws IOException {
-		SqlSession sqlSession = sqlSessionManager.openSession();
-		try {
-			final ScriptRunner scriptRunner = new ScriptRunner(sqlSession.getConnection());
-			buildSchema(scriptRunner);
-			populateData(scriptRunner);
-			sqlSession.commit();
-		} finally {
-			sqlSession.close();
-		}
-	}
+    private void buildDatabase() throws IOException {
+        SqlSession sqlSession = sqlSessionManager.openSession();
+        try {
+            final ScriptRunner scriptRunner = new ScriptRunner(sqlSession.getConnection());
+            buildSchema(scriptRunner);
+            populateData(scriptRunner);
+            sqlSession.commit();
+        } finally {
+            sqlSession.close();
+        }
+    }
 
-	private void populateData(final ScriptRunner scriptRunner) throws IOException {
-		Reader dataloadReader = null;
-		try {
-			dataloadReader = Resources.getResourceAsReader("k0n9/database/dataload.sql");
-			scriptRunner.runScript(dataloadReader);
-		} finally {
-			IOUtils.closeQuietly(dataloadReader);
-		}
-	}
+    private void populateData(final ScriptRunner scriptRunner) throws IOException {
+        Reader dataloadReader = null;
+        try {
+            dataloadReader = Resources.getResourceAsReader("k0n9/database/dataload.sql");
+            scriptRunner.runScript(dataloadReader);
+        } finally {
+            IOUtils.closeQuietly(dataloadReader);
+        }
+    }
 
-	private void buildSchema(final ScriptRunner scriptRunner) throws IOException {
-		Reader schemaReader = null;
-		try {
-			schemaReader = Resources.getResourceAsReader("k0n9/database/schema.sql");
-			scriptRunner.runScript(schemaReader);
-		} finally {
-			IOUtils.closeQuietly(schemaReader);
-		}
-	}
+    private void buildSchema(final ScriptRunner scriptRunner) throws IOException {
+        Reader schemaReader = null;
+        try {
+            schemaReader = Resources.getResourceAsReader("k0n9/database/schema.sql");
+            scriptRunner.runScript(schemaReader);
+        } finally {
+            IOUtils.closeQuietly(schemaReader);
+        }
+    }
 
 }

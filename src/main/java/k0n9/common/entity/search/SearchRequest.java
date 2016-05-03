@@ -11,7 +11,7 @@ import k0n9.common.entity.search.filter.Condition;
 import k0n9.common.entity.search.filter.OrCondition;
 import k0n9.common.entity.search.filter.SearchFilter;
 import k0n9.common.entity.search.filter.SearchFilterHelper;
-import org.apache.shiro.util.CollectionUtils;
+import org.apache.commons.collections.CollectionUtils;
 
 import java.util.Collection;
 import java.util.Collections;

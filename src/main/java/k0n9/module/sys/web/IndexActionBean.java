@@ -2,7 +2,6 @@ package k0n9.module.sys.web;
 
 import com.google.common.collect.Lists;
 import com.google.inject.Inject;
-import k0n9.common.utils.CollectionUtils;
 import k0n9.common.web.BaseActionBean;
 import k0n9.module.sys.entity.Menu;
 import k0n9.module.sys.service.ResourceService;
@@ -11,6 +10,7 @@ import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.HandlesEvent;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
+import org.apache.commons.collections.CollectionUtils;
 
 import java.util.List;
 

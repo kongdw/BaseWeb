@@ -59,7 +59,7 @@
                             <input type="checkbox" class="ace" />
                             <span class="lbl"> 记住我</span>
                           </label>
-                            <s:submit name="login" value="登录" class="width-35 pull-right btn btn-sm btn-primary"/>
+                            <s:submit id="login" name="login" value="登录" class="width-35 pull-right btn btn-sm btn-primary"/>
                         </div>
                         <div class="space-4"></div>
                       </fieldset>
@@ -171,7 +171,7 @@
       $('.login-form input').keypress(function (e) {
         if (e.which == 13) {
           if ($('.login-form').validate().form()) {
-            $('.login-form').submit();
+            $('#login').click();
           }
           return false;
         }

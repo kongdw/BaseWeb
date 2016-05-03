@@ -3,7 +3,6 @@ package k0n9.common.web.resolver;
 import com.google.common.collect.Lists;
 import k0n9.common.entity.search.Searchable;
 import k0n9.common.entity.search.domain.Pageable;
-import k0n9.common.utils.CollectionUtils;
 import k0n9.common.web.bind.SearchableDefaults;
 import net.sourceforge.stripes.action.ActionBean;
 import net.sourceforge.stripes.action.ActionBeanContext;
@@ -11,6 +10,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -105,7 +105,7 @@ public class SearchableArgumentResolver extends BaseArgumentResolver {
     }
 
     private String[] filterSearchValues(String[] values) {
-        List<String> result = Lists.newArrayList(CollectionUtils.arrayToList(values));
+        List<String> result = Lists.newArrayList(Arrays.asList(values));
         for (int i = 0; i < result.size(); i++) {
             if (StringUtils.isBlank(result.get(i))) {
                 result.remove(i);

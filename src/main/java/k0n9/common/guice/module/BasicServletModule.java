@@ -23,8 +23,9 @@ public class BasicServletModule extends ServletModule {
 		filter("*.jsp").through(StripesFilter.class, new HashMap<String, String>() {
             private static final long serialVersionUID = 5833014702903316408L;
             {
+                put("SecurityManager.Class","k0n9.common.plugins.stripes.security.MySecurityManager");
 				put("ActionResolver.Packages", "k0n9.module.sys.web,k0n9.module.archive.web,k0n9.common.web");
-				put("Extension.Packages", "k0n9.common.plugins.stripes.extensions");
+				put("Extension.Packages", "k0n9.common.plugins.stripes.extensions,k0n9.common.plugins.stripes.security");
 				put("Stripes.EncryptionKey", "kongdewen");
 				put("PopulationStrategy.Class", "net.sourceforge.stripes.tag.BeanFirstPopulationStrategy");
 				put("Configuration.Class", "k0n9.common.guice.config.GuiceRuntimeConfiguration");

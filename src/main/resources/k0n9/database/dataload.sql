@@ -1,4 +1,4 @@
-INSERT INTO SYS_USER (ID, USERNAME, EMAIL, PHONE_NUMBER, PASSWORD, SALT, CREATE_DATE, STATUS, DELETED, IS_ADMIN) VALUES (1, 'admin', 'kong.dw@hotmail.com', '13693601808', 'b9d11b3be25f5a1a7dc8ca04cd310b28', 'admin', '2015-11-16 16:06:17.320000000', 'normal', FALSE , true);
+INSERT INTO SYS_USER (ID, USERNAME, EMAIL, PHONE_NUMBER, PASSWORD, SALT, CREATE_DATE, STATUS, DELETED, IS_ADMIN) VALUES (1, 'admin', 'kong.dw@hotmail.com', '13693601808', 'fEqNCco3Yq9h5ZUglD3CZJT4lBs=', 'admin', '2015-11-16 16:06:17.320000000', 'normal', FALSE , true);
 
 INSERT INTO sys_permission (id,name,permission,description,is_show) VALUES (1,'所有','*','所有数据操作的权限',1);
 INSERT INTO sys_permission (id,name,permission,description,is_show) VALUES (2,'新增','create','新增数据操作的权限',1);
