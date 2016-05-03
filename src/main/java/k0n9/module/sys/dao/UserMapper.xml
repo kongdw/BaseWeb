@@ -3,8 +3,16 @@
 <mapper namespace="k0n9.module.sys.dao.UserMapper">
 
     <sql id="userColumns">
-        id,username,email,phone_number,password,salt,
-        create_date,status,deleted,is_admin
+        id,
+        username,
+        email,
+        phone_number,
+        password,
+        salt,
+        create_date,
+        status,
+        deleted,
+        is_admin
     </sql>
 
     <select id="fetch" resultType="User">

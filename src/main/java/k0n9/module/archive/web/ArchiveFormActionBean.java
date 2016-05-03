@@ -7,11 +7,12 @@ import net.sourceforge.stripes.action.*;
  * @author David Kong
  * @version 1.0
  */
-@UrlBinding("/archive/form")
+@UrlBinding("/archive/create")
 public class ArchiveFormActionBean extends ArchiveBaseActionBean {
 
     private static final String FORM = "/WEB-INF/jsp/admin/archive/editForm.jsp";
 
+    @DefaultHandler
     public Resolution form() {
         return new ForwardResolution(FORM);
     }

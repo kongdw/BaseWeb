@@ -35,13 +35,7 @@ public class MySecurityManager  extends InstanceBasedSecurityManager implements 
 
     public Resolution handleAccessDenied(ActionBean bean,Method handler) {
         if (!isUserAuthenticated(bean, handler)) {
-            RedirectResolution resolution = new RedirectResolution(LoginActionBean.class);
-            if (bean.getContext().getRequest().getMethod().equalsIgnoreCase("GET")) {
-                //String loginUrl = ((BaseActionBean) bean).getLastUrl();
-                //resolution.addParameter("loginUrl", loginUrl);
-                System.out.println("handleAccessDenied");
-            }
-            return resolution;
+            return new RedirectResolution(LoginActionBean.class);
         }
         return new ErrorResolution(HttpServletResponse.SC_UNAUTHORIZED);
     }

@@ -3,27 +3,6 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
     <display-name>Basic Web App</display-name>
-    <!-- h2 -->
-    <!--<listener>-->
-        <!--<listener-class>org.h2.server.web.DbStarter</listener-class>-->
-    <!--</listener>-->
-    <!--<context-param>-->
-        <!--<param-name>db.url</param-name>-->
-        <!--<param-value>jdbc:h2:tcp://localhost:9092/~/web</param-value>-->
-    <!--</context-param>-->
-    <!--<context-param>-->
-        <!--<param-name>db.user</param-name>-->
-        <!--<param-value>sa</param-value>-->
-    <!--</context-param>-->
-    <!--<context-param>-->
-        <!--<param-name>db.password</param-name>-->
-        <!--<param-value></param-value>-->
-    <!--</context-param>-->
-    <!--<context-param>-->
-        <!--<param-name>db.tcpServer</param-name>-->
-        <!--<param-value>-tcpAllowOthers</param-value>-->
-    <!--</context-param>-->
-
     <listener>
         <listener-class>k0n9.common.guice.module.BasicWebAppGuiceServletContextListener</listener-class>
     </listener>
@@ -38,4 +17,16 @@
     <welcome-file-list>
         <welcome-file>/WEB-INF/index.jsp</welcome-file>
     </welcome-file-list>
+    <error-page>
+        <error-code>401</error-code>
+        <location>/WEB-INF/jsp/error/401.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/jsp/error/404.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/WEB-INF/jsp/error/500.jsp</location>
+    </error-page>
 </web-app>

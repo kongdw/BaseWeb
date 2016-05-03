@@ -16,7 +16,7 @@ import java.util.List;
  * @version 1.0
  */
 @UrlBinding("/archive")
-@RolesAllowed("Administrator")
+//@RolesAllowed("Administrator")
 public class ArchiveListActionBean extends ArchiveBaseActionBean {
 
     private static final String LIST = "/WEB-INF/jsp/admin/archive/list.jsp";
