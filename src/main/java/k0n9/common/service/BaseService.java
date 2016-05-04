@@ -25,19 +25,12 @@ public abstract class BaseService<T extends Persistable, ID extends Serializable
      * @return
      */
     @Transactional
-    public int insert(T entity) {
-        return getEntityMapper().insert(entity);
-    }
-
-    /**
-     * 修改数据
-     *
-     * @param entity
-     * @return
-     */
-    @Transactional
-    public int update(T entity) {
-        return getEntityMapper().update(entity);
+    public int save(T entity) {
+        if(entity.isNew()){
+            return getEntityMapper().insert(entity);
+        }else {
+            return getEntityMapper().update(entity);
+        }
     }
 
     /**

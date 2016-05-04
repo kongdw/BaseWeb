@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@include file="/WEB-INF/jsp/common/import-taglib.jsp" %>
+<div id="table-container">
 <div class="row" style="background-color: #EFF3F8;">
   <div class="space-2"></div>
   <div class="col-xs-12">
@@ -23,7 +24,6 @@
       <k:page page="${page}"/>
     </div>
   </div>
-
 </div>
 <table id="table" class="table table-striped table-bordered table-hover dataTable no-footer" data-async="true" data-url="${ctx}/archive">
   <thead>
@@ -56,7 +56,7 @@
     <tr role="row">
       <td class="center">
         <label class="pos-rel">
-          <input type="checkbox" class="ace" name="ids" value="${m.id}">
+          <input type="checkbox" class="ace" name="archiveId" value="${m.id}">
           <span class="lbl"></span>
         </label>
       </td>
@@ -64,7 +64,7 @@
       <td>${m.year}</td>
       <td>${m.docNo}</td>
       <td>${m.title}</td>
-      <td>${m.docDate}</td>
+      <td><fmt:formatDate value="${m.docDate}" pattern="yyyy-MM-dd"/> </td>
       <td>${m.category.name}</td>
       <td>${m.deadLine.name}</td>
       <td>${m.responsible}</td>
@@ -79,4 +79,4 @@
   </c:forEach>
   </tbody>
 </table>
-
+</div>

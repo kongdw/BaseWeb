@@ -1,8 +1,11 @@
 <!-- bootstrap & fontawesome -->
 <link rel="stylesheet" href="${ctx}/assets/css/bootstrap.css" />
 <link rel="stylesheet" href="${ctx}/assets/css/font-awesome.css" />
-<link rel="stylesheet" href="${ctx}/assets/css/jquery-ui.css" />
 
+<link rel="stylesheet" href="${ctx}/assets/css/chosen.css" />
+<link rel="stylesheet" href="${ctx}/assets/css/jquery-ui.css" />
+<link rel="stylesheet" href="${ctx}/assets/css/bootstrap-datepicker3.css" />
+<link rel="stylesheet" href="${ctx}/assets/css/bootstrap-datetimepicker.css" />
 <!-- page specific plugin styles -->
 
 <!-- text fonts -->

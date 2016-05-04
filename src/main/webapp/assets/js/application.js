@@ -1924,6 +1924,7 @@ $.table = {
 
             th.click(function () {
                 sortURL = $.table.tableURL(table);
+                sortURL = sortURL+"/table";
                 //清空上次排序
                 sortURL = $.table.removeSortParam(sortURL);
 
@@ -1982,7 +1983,7 @@ $.table = {
      */
     reloadTable: function (table, url, backURL) {
 
-        if (!url) {
+        if(!url) {
             url = $.table.tableURL(table);
         }
 
@@ -1999,7 +2000,7 @@ $.table = {
             var containerId = table.data("async-container");
             var headers = {};
 
-            if (!containerId) {//只替换表格时使用
+            if(!containerId) {//只替换表格时使用
                 headers.table = true;
             } else {
                 headers.container = true;
@@ -2007,14 +2008,14 @@ $.table = {
 
             $.ajax({
                 url: url,
-                async: true,
+                async:true,
                 headers: headers
             }).done(function (data) {
                 if (containerId) {//装载到容器
                     $("#" + containerId).replaceWith(data);
                 } else {
-                    var pagination = table.parent().find(".cis-above-table");
-                    if (pagination.length) {
+                    var pagination = table.next(".table-pagination");
+                    if(pagination.length) {
                         pagination.remove();
                     }
                     table.replaceWith(data);
@@ -2025,14 +2026,11 @@ $.table = {
                 $.table.initTable(table);
 
                 var callback = table.data("async-callback");
-                if (callback && window[callback]) {
+                if(callback && window[callback]) {
                     window[callback](table);
                 }
 
                 $.app.waitingOver();
-
-                $("input[type='checkbox']").uniform();
-                $("select").select2();
             });
         } else {
             window.location.href = url;
@@ -2145,7 +2143,7 @@ $.table = {
                 message: "确定删除选择的数据吗？",
                 ok: function () {
                     window.location.href =
-                        urlPrefix + "/batch/delete?" + checkbox.serialize() + "&BackURL=" + $.table.encodeTableURL($table);
+                        urlPrefix + "/delete?" + checkbox.serialize() + "&BackURL=" + $.table.encodeTableURL($table);
                 }
             });
         });
@@ -2161,7 +2159,7 @@ $.table = {
             var checkbox = $.table.getFirstSelectedCheckbox($table);
             if (!checkbox.length)  return;
             var id = checkbox.val();
-            window.location.href = urlPrefix + "/" + id + "/update?BackURL=" + $.table.encodeTableURL($table);
+            window.location.href = urlPrefix + "/update/" + id + "?BackURL=" + $.table.encodeTableURL($table);
         });
     },
     initCreate: function ($table, urlPrefix) {
@@ -2173,7 +2171,7 @@ $.table = {
         $btn.addClass("no-disabled");
 
         $btn.off("click").on("click", function () {
-            var url = $.table.formatUrlPrefix(urlPrefix, $table) + "/create";
+            var url = $.table.formatUrlPrefix(urlPrefix, $table) + "/form";
             if ($btn.attr("href")) {
                 url = $btn.attr("href");
             }

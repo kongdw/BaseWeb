@@ -33,12 +33,12 @@
     </sql>
 
     <sql id="Join">
-        INNER JOIN  ams_type t ON a.type_id = t.id
-        INNER JOIN  ams_category cg on a.category_id = cg.id
-        INNER JOIN  ams_deadline dl on a.deadline_id = dl.id
-        INNER JOIN ams_doc_class dc on a.doc_class_id = dc.id
-        INNER JOIN ams_privacy_level pl on a.privacy_level_id = pl.id
-        INNER JOIN ams_urgent_level ul on a.urgent_level_id = ul.id
+        LEFT JOIN  ams_type t ON a.type_id = t.id
+        LEFT JOIN  ams_category cg on a.category_id = cg.id
+        LEFT JOIN  ams_deadline dl on a.deadline_id = dl.id
+        LEFT JOIN ams_doc_class dc on a.doc_class_id = dc.id
+        LEFT JOIN ams_privacy_level pl on a.privacy_level_id = pl.id
+        LEFT JOIN ams_urgent_level ul on a.urgent_level_id = ul.id
     </sql>
 
     <select id="fetch" resultType="Archive">
@@ -77,7 +77,7 @@
         ORDER BY id DESC
     </select>
 
-    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="Archive">
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="Archive" flushCache="true">
 		INSERT INTO ams_archive (
             title,
             type_id,
@@ -101,16 +101,16 @@
 		    #{title},
             #{type.id},
             #{category.id},
-            #{deadline.id},
+            #{deadLine.id},
             #{docClass.id},
             #{year},
-            #{doc_no},
-            #{doc_date},
-            #{forcer_no},
-            #{box_no},
-            #{fonds_no},
-            #{part_num},
-            #{page_num},
+            #{docNo},
+            #{docDate},
+            #{forcerNo},
+            #{boxNo},
+            #{fondsNo},
+            #{partNum},
+            #{pageNum},
             #{responsible},
             #{dept},
             #{privacyLevel.id},
@@ -124,16 +124,16 @@
 		    title=#{title},
             type_id=#{type.id},
             category_id=#{category.id},
-            deadline_id=#{deadline.id},
+            deadline_id=#{deadLine.id},
             doc_class_id=#{docClass.id},
             year=#{year},
-            doc_no=#{doc_no},
-            doc_date=#{doc_date},
-            forcer_no=#{forcer_no},
-            box_no=#{box_no},
-            fonds_no=#{fonds_no},
-            part_num=#{part_num},
-            page_num=#{page_num},
+            doc_no=#{docNo},
+            doc_date=#{docDate},
+            forcer_no=#{forcerNo},
+            box_no=#{boxNo},
+            fonds_no=#{fondsNo},
+            part_num=#{partNum},
+            page_num=#{pageNum},
             responsible=#{responsible},
             dept=#{dept},
             privacy_level_id=#{privacyLevel.id},
