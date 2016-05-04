@@ -51,21 +51,22 @@ public class ArchiveListActionBean extends ArchiveBaseActionBean {
 
     /**
      * 显示列表
+     *
      * @return
      */
     @DefaultHandler
     public Resolution list() {
-        return new ForwardResolution(LIST);
-    }
-
-    public Resolution table(){
-        return new ForwardResolution(TABLE);
+        if (isRequestHeaderTable()) {
+            return new ForwardResolution(TABLE);
+        } else {
+            return new ForwardResolution(LIST);
+        }
     }
     public Resolution form() {
         return new ForwardResolution(FORM);
     }
 
-    public Resolution update(){
+    public Resolution update() {
         return new ForwardResolution(FORM);
     }
 
@@ -91,30 +92,32 @@ public class ArchiveListActionBean extends ArchiveBaseActionBean {
     }
 
     public List<Archive> getArchives() {
-        return getEntityService().findByList(new Archive());
+        return getEntityService().findByList(getArchive());
     }
 
-    public List<Type> getType(){
+    public List<Type> getType() {
         return typeService.findByList(new Type());
     }
 
-    public List<Category> getCategory(){
+    public List<Category> getCategory() {
         return categoryService.findByList(new Category());
     }
 
-    public List<DeadLine> getDeadLine(){
+    public List<DeadLine> getDeadLine() {
         return deadLineService.findByList(new DeadLine());
     }
 
-    public List<DocumentClass> getDocClass(){
+    public List<DocumentClass> getDocClass() {
         return documentClassService.findByList(new DocumentClass());
     }
 
-    public List<PrivacyLevel> getPrivacyLevel(){
+    public List<PrivacyLevel> getPrivacyLevel() {
         return privacyLevelService.findByList(new PrivacyLevel());
     }
 
-    public List<UrgentLevel> getUrgentLevel(){
+    public List<UrgentLevel> getUrgentLevel() {
         return urgentLevelService.findByList(new UrgentLevel());
     }
+
+
 }

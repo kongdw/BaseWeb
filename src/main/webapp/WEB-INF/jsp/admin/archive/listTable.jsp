@@ -1,10 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="/WEB-INF/jsp/common/import-taglib.jsp" %>
-<div id="table-container">
-<div class="row" style="background-color: #EFF3F8;">
+<div class="row table-tool">
   <div class="space-2"></div>
   <div class="col-xs-12">
-    <div class="pull-left" style="padding-left: 5px;">
+    <div class="table-btn">
       <div class="btn-group">
         <button type="button" class="btn btn-white btn-info btn-sm btn-create">
           <i class="ace-icon glyphicon glyphicon-file"></i>
@@ -20,12 +19,12 @@
         </button>
       </div>
     </div>
-    <div class="pull-right" style="padding-right: 5px;">
+    <div class="table-page">
       <k:page page="${page}"/>
     </div>
   </div>
 </div>
-<table id="table" class="table table-striped table-bordered table-hover dataTable no-footer" data-async="true" data-url="${ctx}/archive">
+<table id="table" class="table table-striped table-bordered table-hover dataTable" data-async="true" data-url="${ctx}/archive">
   <thead>
   <tr role="row">
     <th class="center sorting_disabled">
@@ -79,4 +78,3 @@
   </c:forEach>
   </tbody>
 </table>
-</div>

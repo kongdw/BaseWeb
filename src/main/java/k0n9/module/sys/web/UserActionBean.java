@@ -1,6 +1,7 @@
 package k0n9.module.sys.web;
 
 import com.google.inject.Inject;
+import k0n9.common.plugins.mybatis.model.Page;
 import k0n9.common.plugins.stripes.action.JsonResolution;
 import k0n9.common.service.BaseService;
 import k0n9.common.web.CRUDActionBean;
@@ -27,7 +28,7 @@ public class UserActionBean extends CRUDActionBean<User,Long> {
 
     private UserService userService;
 
-    private List<User> users;
+    private Page<User> users;
 
     @Override
     protected BaseService<User, Long> getEntityService() {
@@ -58,11 +59,11 @@ public class UserActionBean extends CRUDActionBean<User,Long> {
         return new JsonResolution(users);
     }
 
-    public List<User> getUsers() {
+    public Page<User> getUsers() {
         return users;
     }
 
-    public void setUsers(List<User> users) {
+    public void setUsers(Page<User> users) {
         this.users = users;
     }
 

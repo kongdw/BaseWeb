@@ -1828,7 +1828,7 @@ $.table = {
             return;
         }
 
-        searchForm.find(".btn").addClass("no-disabled");
+        // searchForm.find(".btn-search").addClass("no-disabled");
 
         searchForm.find(".btn-clear-search").click(function () {
 
@@ -1859,9 +1859,9 @@ $.table = {
         };
 
         searchForm.off("submit").on("submit", function () {
-            if (!searchForm.validationEngine('validate')) {
-                return false;
-            }
+            // if (!searchForm.validationEngine('validate')) {
+            //     return false;
+            // }
             turnSearch(table, searchForm, false);
             return false;
         });
@@ -1924,7 +1924,6 @@ $.table = {
 
             th.click(function () {
                 sortURL = $.table.tableURL(table);
-                sortURL = sortURL+"/table";
                 //清空上次排序
                 sortURL = $.table.removeSortParam(sortURL);
 
@@ -2014,9 +2013,9 @@ $.table = {
                 if (containerId) {//装载到容器
                     $("#" + containerId).replaceWith(data);
                 } else {
-                    var pagination = table.next(".table-pagination");
-                    if(pagination.length) {
-                        pagination.remove();
+                    var tableTool = table.closest("[data-table='" + tableId + "']").find(".table-tool");
+                    if(tableTool.length) {
+                        tableTool.remove();
                     }
                     table.replaceWith(data);
                 }

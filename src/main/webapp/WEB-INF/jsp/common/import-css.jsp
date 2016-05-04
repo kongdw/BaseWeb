@@ -11,6 +11,8 @@
 <!-- text fonts -->
 <link rel="stylesheet" href="${ctx}/assets/css/ace-fonts.css" />
 
+<link rel="stylesheet" href="${ctx}/assets/css/application.css" />
+
 <!-- ace styles -->
 <link rel="stylesheet" href="${ctx}/assets/css/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
 
