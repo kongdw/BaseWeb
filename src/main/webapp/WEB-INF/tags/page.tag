@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="es" tagdir="/WEB-INF/tags" %>
 
-<%@ attribute name="page" type="k0n9.common.plugins.mybatis.model.Page" required="true" description="分页" %>
+<%@ attribute name="page" type="k0n9.common.entity.search.domain.Page" required="true" description="分页" %>
 <%@ attribute name="pageSize" type="java.lang.Integer" required="false" description="每页大小" %>
 <%@ attribute name="simple" type="java.lang.Boolean" required="false" description="是否简单风格" %>
 

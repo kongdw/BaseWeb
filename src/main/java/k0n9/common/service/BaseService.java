@@ -2,8 +2,9 @@ package k0n9.common.service;
 
 import k0n9.common.dao.BaseMapper;
 import k0n9.common.entity.Persistable;
+import k0n9.common.entity.search.domain.Page;
+import k0n9.common.entity.search.domain.PageImpl;
 import k0n9.common.plugins.mybatis.PaginationInterceptor;
-import k0n9.common.plugins.mybatis.model.Page;
 import org.mybatis.guice.transactional.Transactional;
 
 import java.io.Serializable;
@@ -69,12 +70,12 @@ public abstract class BaseService<T extends Persistable, ID extends Serializable
      */
     public Page<T> findByPage(T entity) {
         int count = PaginationInterceptor.getPaginationTotal();
-        return new Page<T>(getEntityMapper().findByPage(entity),count);
+        return new PageImpl<T>(getEntityMapper().findPage(entity));
     }
 
 
     public List<T> findByList(T entity){
-        return getEntityMapper().findByList(entity);
+        return getEntityMapper().findList(entity);
     }
     /**
      * 查询ID数组

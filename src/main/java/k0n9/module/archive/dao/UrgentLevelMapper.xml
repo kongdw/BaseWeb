@@ -21,14 +21,14 @@
         WHERE id = #{id}
     </select>
 
-    <select id="findByPage" resultType="UrgentLevel">
+    <select id="findPage" resultType="UrgentLevel">
         SELECT
         <include refid="selectColumns"/>
         FROM ams_urgent_level
         ORDER BY weight DESC
     </select>
 
-    <select id="findByList" resultType="UrgentLevel">
+    <select id="findList" resultType="UrgentLevel">
         SELECT
         <include refid="selectColumns"/>
         FROM ams_urgent_level

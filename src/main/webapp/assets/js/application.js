@@ -368,9 +368,18 @@ $.app = {
             }
 
             $.app.waiting(loadingMessage);
-            iframe.prop("src",url);
-            iframe.iframeAutoHeight({minHeight: 500, heightOffset: 10, animate: true, resetToMinHeight: true,callback:$.app.activeIframe(panelId, iframe)});
-            $.app.waitingOver();
+            iframe.prop("src", url);
+            var loadedCallback = function(){
+                console.log('loadedCallback');
+                $.app.activeIframe(panelId, iframe);
+                $.app.waitingOver();
+                };
+            iframe.iframeAutoHeight({
+                minHeight: 500,
+                heightOffset: 10,
+                resetToMinHeight: true,
+                callback: loadedCallback
+            });
             // iframe.prop("src", url).one("load", function () {
             //     $.app.activeIframe(panelId, iframe);
             //     iframe.iframeAutoHeight({minHeight: 500, heightOffset: 10, animate: true, resetToMinHeight: true});
@@ -380,7 +389,6 @@ $.app = {
         } else {
             $.app.activeIframe(panelId, iframe);
         }
-
     },
     activeIframe: function (panelId, iframe) {
         if (!iframe) {
@@ -390,18 +398,7 @@ $.app = {
         iframeContainer.find('iframe').each(function () {
             $(this).hide();
         });
-        // iframeContainer.append(iframe);
         iframe.show();
-
-        // var layout = $.layouts.layout;
-        // if (layout.panes.center.prop("id") == iframe.prop("id")) {
-        //     return;
-        // }
-        // layout.panes.center.hide();
-        // layout.panes.center = iframe;
-        // layout.panes.center.show();
-        // layout.resizeAll();
-        // $.tabs.initTabScrollHideOrShowMoveBtn(panelId);
     },
 
     waiting: function (message, isSmall) {
@@ -937,13 +934,12 @@ $.menus = {
                 return;
             }
             var active = function (a, forceRefresh) {
-                console.log(href)
+                var active_class = 'active open';
                 menus.find(".active").each(function () {
-                    var $class = 'active open';
-                    $(this).removeClass($class);
+                    $(this).removeClass(active_class);
                     $(this).find(' > .submenu').css('display', '');
                 });
-                a.closest('li').addClass('active').parents('.nav li').addClass('active open');
+                a.closest('li').addClass('active').parents('.nav li').addClass(active_class);
                 menus.closest('.sidebar[data-sidebar-scroll=true]').each(function () {
                     var $this = $(this);
                     $this.ace_sidebar_scroll('reset');
@@ -1727,72 +1723,37 @@ $.table = {
 
     },
     initCheckbox: function (table) {
-        var activeClass = "active";
+        var activeClass = "selected";
         //初始化表格中checkbox 点击单元格选中
-        table.find("td.check").each(function () {
-            var checkbox = $(this).find(":checkbox,:radio");
-            checkbox.off("click").on("click", function (event) {
-                var checked = checkbox.is(":checked");
-                if (!checked) {
-                    checkbox.closest("tr").removeClass(activeClass);
-                    checkbox.parent().removeClass("checked");
-                } else {
-                    checkbox.closest("tr").addClass(activeClass);
-                    checkbox.parent().addClass("checked");
-                }
-                $.table.changeBtnState(table);
-                event.stopPropagation();
-            });
-            $(this).closest("tr").off("click").on("click", function (event) {
-                var checked = checkbox.is(":checked");
-                if (checked) {
-                    checkbox.closest("tr").removeClass(activeClass);
-                    checkbox.parent().removeClass("checked");
-                } else {
-                    checkbox.closest("tr").addClass(activeClass);
-                    checkbox.parent().addClass("checked");
-                }
-                checkbox.prop("checked", !checked);
-                $.table.changeBtnState(table);
-            });
-        });
-        //初始化全选反选
-        table.find(".check-all").off("click").on("click", function () {
-            var checkAll = $(this);
-            if (checkAll.text() == '全选') {
-                checkAll.text("取消");
-                table.find("td.check :checkbox").prop("checked", true).closest("tr").addClass(activeClass);
-                table.find("td.check :checkbox").parent().addClass("checked");
-            } else {
-                checkAll.text("全选");
-                table.find("td.check :checkbox").prop("checked", false).closest("tr").removeClass(activeClass);
-                table.find("td.check :checkbox").parent().removeClass("checked");
-            }
+        table.on('click', 'td input[type=checkbox]', function () {
+            var $row = $(this).closest('tr');
+            if (this.checked) $row.addClass(activeClass);
+            else $row.removeClass(activeClass);
             $.table.changeBtnState(table);
         });
-        table.find(".reverse-all").off("click").on("click", function () {
-            table.find("td.check :checkbox").each(function () {
-                var checkbox = $(this);
-                var checked = checkbox.is(":checked");
-                if (checked) {
-                    checkbox.closest("tr").removeClass(activeClass);
-                    checkbox.parent().removeClass("checked");
-                } else {
-                    checkbox.closest("tr").addClass(activeClass);
-                    checkbox.parent().addClass("checked");
-                }
-                checkbox.prop("checked", !checked);
-                $.table.changeBtnState(table);
+        //初始化全选反选
+        table.find('> thead > tr > th input[type=checkbox]').eq(0).on('click', function () {
+            var th_checked = this.checked;//checkbox inside "TH" table header
+
+            $(this).closest('table').find('tbody > tr').each(function () {
+                var row = this;
+                if (th_checked) $(row).addClass(activeClass).find('input[type=checkbox]').eq(0).prop('checked', true);
+                else $(row).removeClass(activeClass).find('input[type=checkbox]').eq(0).prop('checked', false);
             });
+            $.table.changeBtnState(table);
         });
     },
     changeBtnState: function (table) {
-        var hasChecked = table.find("td.check :checkbox:checked").length;
-        var btns = table.closest(".tab-content").find(".btn-group .btn").not(".no-disabled");
+        var hasChecked = 0;
+        table.find("td input[type=checkbox]").each(function () {
+            if ($(this).is(':checked')) {
+                ++hasChecked;
+            }
+        });
+        var btns = table.prev(".table-tool").find(".btn-group .btn").not(".no-disabled");
         if (hasChecked) {
             btns.each(function () {
                 var btn = $(this);
-
                 if (btn.hasClass("one-check") && hasChecked > 1) {
                     btn.addClass("disabled");
                 } else {
@@ -1828,7 +1789,7 @@ $.table = {
             return;
         }
 
-        // searchForm.find(".btn-search").addClass("no-disabled");
+        searchForm.find(".btn-search").addClass("no-disabled");
 
         searchForm.find(".btn-clear-search").click(function () {
 
@@ -1982,7 +1943,7 @@ $.table = {
      */
     reloadTable: function (table, url, backURL) {
 
-        if(!url) {
+        if (!url) {
             url = $.table.tableURL(table);
         }
 
@@ -1999,7 +1960,7 @@ $.table = {
             var containerId = table.data("async-container");
             var headers = {};
 
-            if(!containerId) {//只替换表格时使用
+            if (!containerId) {//只替换表格时使用
                 headers.table = true;
             } else {
                 headers.container = true;
@@ -2007,14 +1968,14 @@ $.table = {
 
             $.ajax({
                 url: url,
-                async:true,
+                async: true,
                 headers: headers
             }).done(function (data) {
                 if (containerId) {//装载到容器
                     $("#" + containerId).replaceWith(data);
                 } else {
                     var tableTool = table.closest("[data-table='" + tableId + "']").find(".table-tool");
-                    if(tableTool.length) {
+                    if (tableTool.length) {
                         tableTool.remove();
                     }
                     table.replaceWith(data);
@@ -2025,7 +1986,7 @@ $.table = {
                 $.table.initTable(table);
 
                 var callback = table.data("async-callback");
-                if(callback && window[callback]) {
+                if (callback && window[callback]) {
                     window[callback](table);
                 }
 

@@ -9,7 +9,7 @@
           <i class="ace-icon glyphicon glyphicon-file"></i>
           添加
         </button>
-        <button type="button" class="btn btn-white btn-info btn-sm btn-update">
+        <button type="button" class="btn btn-white btn-info btn-sm one-check btn-update">
           <i class="ace-icon glyphicon glyphicon-pencil"></i>
           修改
         </button>
@@ -20,7 +20,7 @@
       </div>
     </div>
     <div class="table-page">
-      <k:page page="${page}"/>
+      <k:page page="${actionBean.page}"/>
     </div>
   </div>
 </div>
@@ -51,7 +51,7 @@
   </tr>
   </thead>
   <tbody>
-  <c:forEach items="${actionBean.archives}" var="m">
+  <c:forEach items="${actionBean.page.content}" var="m">
     <tr role="row">
       <td class="center">
         <label class="pos-rel">

@@ -21,14 +21,14 @@
         WHERE id = #{id}
     </select>
 
-    <select id="findByPage" resultType="Category">
+    <select id="findPage" resultType="Category">
         SELECT
         <include refid="selectColumns"/>
         FROM ams_category
         ORDER BY weight DESC
     </select>
 
-    <select id="findByList" resultType="Category">
+    <select id="findList" resultType="Category">
         SELECT
         <include refid="selectColumns"/>
         FROM ams_category

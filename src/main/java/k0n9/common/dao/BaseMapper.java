@@ -1,5 +1,7 @@
 package k0n9.common.dao;
 
+import k0n9.common.entity.Persistable;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -9,7 +11,7 @@ import java.util.List;
  * @author David Kong
  * @version 1.0
  */
-public interface BaseMapper<T, ID extends Serializable> {
+public interface BaseMapper<T extends Persistable, ID extends Serializable> {
 
     /**
      * 插入数据
@@ -65,7 +67,7 @@ public interface BaseMapper<T, ID extends Serializable> {
      * @param entity 查询条件
      * @return 满足查询条件的集合
      */
-    List<T> findByPage(T entity);
+    List<T> findPage(T entity);
 
     /**
      * 查询所有数据列表
@@ -73,7 +75,7 @@ public interface BaseMapper<T, ID extends Serializable> {
      * @param entity 查询条件
      * @return 满足查询条件的集合
      */
-    List<T> findByList(T entity);
+    List<T> findList(T entity);
 
     /**
      * 查询ID数组

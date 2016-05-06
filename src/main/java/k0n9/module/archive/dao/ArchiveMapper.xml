@@ -49,7 +49,7 @@
         WHERE a.id = #{id}
     </select>
 
-    <select id="findByPage" resultType="Archive">
+    <select id="findPage" resultType="Archive">
         SELECT
         <include refid="selectColumns"/>
         FROM ams_archive a
@@ -57,7 +57,7 @@
         ORDER BY id DESC
     </select>
 
-    <select id="findByList" resultType="Archive">
+    <select id="findList" resultType="Archive">
         SELECT
         <include refid="selectColumns"/>
         FROM ams_archive a

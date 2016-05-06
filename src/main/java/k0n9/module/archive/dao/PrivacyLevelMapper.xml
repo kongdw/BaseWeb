@@ -21,14 +21,14 @@
         WHERE id = #{id}
     </select>
 
-    <select id="findByPage" resultType="PrivacyLevel">
+    <select id="findPage" resultType="PrivacyLevel">
         SELECT
         <include refid="selectColumns"/>
         FROM ams_privacy_level
         ORDER BY weight DESC
     </select>
 
-    <select id="findByList" resultType="PrivacyLevel">
+    <select id="findList" resultType="PrivacyLevel">
         SELECT
         <include refid="selectColumns"/>
         FROM ams_privacy_level

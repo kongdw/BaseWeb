@@ -1,6 +1,7 @@
 package k0n9.module.archive.web;
 
 import com.google.inject.Inject;
+import k0n9.common.entity.search.domain.Page;
 import k0n9.module.archive.entity.Archive;
 import k0n9.module.archive.entity.Category;
 import k0n9.module.archive.entity.DeadLine;
@@ -91,8 +92,8 @@ public class ArchiveListActionBean extends ArchiveBaseActionBean {
         return new RedirectResolution(ArchiveListActionBean.class);
     }
 
-    public List<Archive> getArchives() {
-        return getEntityService().findByList(getArchive());
+    public Page<Archive> getPage() {
+        return getEntityService().findByPage(getArchive());
     }
 
     public List<Type> getType() {

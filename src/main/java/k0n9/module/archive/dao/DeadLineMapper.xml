@@ -21,14 +21,14 @@
         WHERE id = #{id}
     </select>
 
-    <select id="findByPage" resultType="DeadLine">
+    <select id="findPage" resultType="DeadLine">
         SELECT
         <include refid="selectColumns"/>
         FROM ams_deadline
         ORDER BY weight DESC
     </select>
 
-    <select id="findByList" resultType="DeadLine">
+    <select id="findList" resultType="DeadLine">
         SELECT
         <include refid="selectColumns"/>
         FROM ams_deadline
