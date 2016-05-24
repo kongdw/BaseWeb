@@ -42,7 +42,7 @@
             <input type="text"
                    class="form-control input-small" style="height: 27px;width: 40px;"
                    value="${current}"
-                   onblur="$('.pageField').validationEngine('validate') && $.table.turnPage('${pageSize}', $(this).val(), this)"/>
+                   onblur="$.table.turnPage('${pageSize}', $(this).val(), this)"/>
         </form>
         <c:choose>
             <c:when test="${page.lastPage}">

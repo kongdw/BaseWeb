@@ -1,7 +1,9 @@
 package k0n9.module.archive.web;
 
 import com.google.inject.Inject;
+import k0n9.common.entity.search.Searchable;
 import k0n9.common.entity.search.domain.Page;
+import k0n9.common.web.resolver.SearchableArgumentResolver;
 import k0n9.module.archive.entity.Archive;
 import k0n9.module.archive.entity.Category;
 import k0n9.module.archive.entity.DeadLine;
@@ -50,6 +52,18 @@ public class ArchiveListActionBean extends ArchiveBaseActionBean {
     @Inject
     private UrgentLevelService urgentLevelService;
 
+
+    private Page<Archive> archives;
+
+
+    public Page<Archive> getArchives() {
+        return archives;
+    }
+
+    public void setArchives(Page<Archive> archives) {
+        this.archives = archives;
+    }
+
     /**
      * 显示列表
      *
@@ -57,12 +71,15 @@ public class ArchiveListActionBean extends ArchiveBaseActionBean {
      */
     @DefaultHandler
     public Resolution list() {
+        Searchable searchable = (Searchable) new SearchableArgumentResolver().resolveArgument(this, getContext());
+        this.archives = getEntityService().findPage(searchable);
         if (isRequestHeaderTable()) {
             return new ForwardResolution(TABLE);
         } else {
             return new ForwardResolution(LIST);
         }
     }
+
     public Resolution form() {
         return new ForwardResolution(FORM);
     }
@@ -93,31 +110,31 @@ public class ArchiveListActionBean extends ArchiveBaseActionBean {
     }
 
     public Page<Archive> getPage() {
-        return getEntityService().findByPage(getArchive());
+        return archives;
     }
 
     public List<Type> getType() {
-        return typeService.findByList(new Type());
+        return typeService.findList(new Type());
     }
 
     public List<Category> getCategory() {
-        return categoryService.findByList(new Category());
+        return categoryService.findList(new Category());
     }
 
     public List<DeadLine> getDeadLine() {
-        return deadLineService.findByList(new DeadLine());
+        return deadLineService.findList(new DeadLine());
     }
 
     public List<DocumentClass> getDocClass() {
-        return documentClassService.findByList(new DocumentClass());
+        return documentClassService.findList(new DocumentClass());
     }
 
     public List<PrivacyLevel> getPrivacyLevel() {
-        return privacyLevelService.findByList(new PrivacyLevel());
+        return privacyLevelService.findList(new PrivacyLevel());
     }
 
     public List<UrgentLevel> getUrgentLevel() {
-        return urgentLevelService.findByList(new UrgentLevel());
+        return urgentLevelService.findList(new UrgentLevel());
     }
 
 

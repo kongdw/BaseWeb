@@ -2,14 +2,19 @@ package k0n9.module.archive.entity;
 
 import k0n9.common.entity.BaseEntity;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.Date;
 
 /**
  * @author David Kong
  * @version 1.0
  */
+@Entity
+@Table(name = "a")
 public class Archive extends BaseEntity<Long> {
     private static final long serialVersionUID = -6319179178860306571L;
+
     private Long id;
     //标题
     private String title;
@@ -198,6 +203,5 @@ public class Archive extends BaseEntity<Long> {
     public void setRemark(String remark) {
         this.remark = remark;
     }
-
 
 }

@@ -1,6 +1,6 @@
 package k0n9.common.guice.module;
 
-import k0n9.common.plugins.mybatis.PaginationInterceptor;
+import k0n9.common.plugins.mybatis.SearchableLanguageDriver;
 import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 import org.mybatis.guice.MyBatisModule;
 import org.mybatis.guice.datasource.builtin.PooledDataSourceProvider;
@@ -43,6 +43,9 @@ public class BasicMyBatisModule extends MyBatisModule {
         addSimpleAliases("k0n9.module.sys.entity");
         addMapperClasses("k0n9.module.archive.dao");
         addSimpleAliases("k0n9.module.archive.entity");
-        addInterceptorClass(PaginationInterceptor.class);
+        //addInterceptorClass(ExecutorInterceptor.class);
+        //addInterceptorClass(PaginationInterceptor.class);
+        addSimpleAlias(org.mybatis.scripting.freemarker.FreeMarkerLanguageDriver.class);
+        addSimpleAlias(SearchableLanguageDriver.class);
     }
 }

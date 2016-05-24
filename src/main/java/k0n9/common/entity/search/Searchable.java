@@ -188,7 +188,7 @@ public abstract class Searchable {
      *
      * @return
      */
-    public abstract boolean hashSort();
+    public abstract boolean hasSort();
 
     public abstract void removeSort();
 

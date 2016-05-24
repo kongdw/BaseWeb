@@ -46,16 +46,16 @@ $.app = {
                 }
             });
         };
-        longPolling(pollingUrl, function (data) {
-            if (data) {
-                if (data.unreadMessageCount) {
-                    message.update(data.unreadMessageCount);
-                }
-                if (data.notifications) {
-                    notification.update(data.notifications);
-                }
-            }
-        });
+        //longPolling(pollingUrl, function (data) {
+        //    if (data) {
+        //        if (data.unreadMessageCount) {
+        //            message.update(data.unreadMessageCount);
+        //        }
+        //        if (data.notifications) {
+        //            notification.update(data.notifications);
+        //        }
+        //    }
+        //});
 
     },
     initCommonBtn: function () {

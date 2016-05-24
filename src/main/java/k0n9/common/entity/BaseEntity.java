@@ -4,6 +4,7 @@ import com.google.common.collect.Maps;
 import k0n9.common.plugins.stripes.action.JsonIgnore;
 import org.apache.commons.lang3.StringUtils;
 
+import javax.persistence.Transient;
 import java.io.Serializable;
 import java.util.Map;
 
@@ -34,11 +35,13 @@ public abstract class BaseEntity<ID extends Serializable> implements Persistable
      * 自定义sqlMap(sql标识,值对象)
      */
     @JsonIgnore
+    @Transient
     protected Map<String, Object> sqlMap;
 
     /**
      * Entity本身无用，主要用于UI层辅助参数传递
      */
+    @Transient
     private Map<String, Object> extraAttributes;
 
     /**

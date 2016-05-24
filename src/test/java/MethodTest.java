@@ -1,3 +1,4 @@
+import k0n9.common.entity.search.SearchOperator;
 import net.sourceforge.stripes.util.Base64;
 import org.apache.commons.lang3.reflect.MethodUtils;
 import org.mybatis.guice.transactional.Transactional;
@@ -20,6 +21,10 @@ public class MethodTest {
     }
 
     public static void main(String[] args) throws NoSuchMethodException, NoSuchAlgorithmException {
+        SearchOperator searchOperator = SearchOperator.suffixLike;
+        System.out.println(searchOperator.toString());
+        System.out.println(SearchOperator.suffixLike.toString());
+        System.out.println(SearchOperator.suffixLike.getSymbol());
         String password = "123456";
         MessageDigest md = MessageDigest.getInstance("SHA-1");
         byte[] bytes = md.digest(password.getBytes());

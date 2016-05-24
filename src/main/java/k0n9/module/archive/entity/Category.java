@@ -2,10 +2,15 @@ package k0n9.module.archive.entity;
 
 import k0n9.common.entity.BaseEntity;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 /**
  * @author David Kong
  * @version 1.0
  */
+@Entity
+@Table(name = "cg")
 public class Category extends BaseEntity<Long> {
     private static final long serialVersionUID = -3288949373112976522L;
 

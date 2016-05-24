@@ -2,7 +2,6 @@ package k0n9.module.sys.web;
 
 import com.google.inject.Inject;
 import k0n9.common.entity.search.domain.Page;
-import k0n9.common.plugins.stripes.action.JsonResolution;
 import k0n9.common.service.BaseService;
 import k0n9.common.web.CRUDActionBean;
 import k0n9.module.sys.entity.User;
@@ -47,14 +46,8 @@ public class UserActionBean extends CRUDActionBean<User,Long> {
 
     @DefaultHandler
     public Resolution list() {
-        users = userService.findByPage(new User());
+        users = findByPage();
         return new ForwardResolution(LIST_FORWARD);
-    }
-
-
-    public Resolution ajaxList(){
-        users = userService.findByPage(new User());
-        return new JsonResolution(users);
     }
 
     public Page<User> getUsers() {

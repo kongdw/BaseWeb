@@ -8,12 +8,21 @@
     <name>BaseWeb Maven Webapp</name>
     <url>http://maven.apache.org</url>
     <dependencies>
-
         <!--mybatis-->
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
             <version>3.2.8</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis.scripting</groupId>
+            <artifactId>mybatis-freemarker</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>persistence-api</artifactId>
+            <version>1.0</version>
         </dependency>
         <!--google guice-->
         <dependency>
@@ -21,6 +30,8 @@
             <artifactId>guice</artifactId>
             <version>4.0</version>
         </dependency>
+
+
         <!-- google guice plugin -->
         <dependency>
             <groupId>com.google.inject.extensions</groupId>
@@ -50,8 +61,8 @@
         </dependency>
         <dependency>
             <groupId>javax.annotation</groupId>
-            <artifactId>jsr250-api</artifactId>
-            <version>1.0</version>
+            <artifactId>javax.annotation-api</artifactId>
+            <version>1.2</version>
         </dependency>
 
         <dependency>
@@ -108,6 +119,12 @@
             <version>4.11</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <version>2.0.3</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     <build>
         <!---${maven.build.timestamp}-->
@@ -130,8 +147,8 @@
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>1.6</source>
+                    <target>1.6</target>
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>

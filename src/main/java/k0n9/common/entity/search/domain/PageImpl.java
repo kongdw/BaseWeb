@@ -6,10 +6,6 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-/**
- * @author David Kong
- * @version 1.0
- */
 public class PageImpl<T> implements Page<T>, Serializable {
 
     private static final long serialVersionUID = 867755909294344406L;

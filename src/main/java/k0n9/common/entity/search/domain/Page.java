@@ -1,10 +1,5 @@
 package k0n9.common.entity.search.domain;
 
-/**
- * @author David Kong
- * @version 1.0
- */
-
 import java.util.Iterator;
 import java.util.List;
 

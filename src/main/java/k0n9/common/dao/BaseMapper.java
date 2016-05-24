@@ -1,6 +1,7 @@
 package k0n9.common.dao;
 
 import k0n9.common.entity.Persistable;
+import k0n9.common.entity.search.Searchable;
 
 import java.io.Serializable;
 import java.util.List;
@@ -64,10 +65,12 @@ public interface BaseMapper<T extends Persistable, ID extends Serializable> {
     /**
      * 查询所有数据列表
      *
-     * @param entity 查询条件
+     * @param searchable 查询条件
      * @return 满足查询条件的集合
      */
-    List<T> findPage(T entity);
+    List<T> findPage(Searchable searchable);
+
+    Long findCount(Searchable searchable);
 
     /**
      * 查询所有数据列表

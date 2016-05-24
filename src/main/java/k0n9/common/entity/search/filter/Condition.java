@@ -18,6 +18,7 @@ public final class Condition implements SearchFilter {
     private String key;
     private String searchProperty;
     private SearchOperator operator;
+    private String searchColumn;
     private Object value;
 
     /**
@@ -86,6 +87,7 @@ public final class Condition implements SearchFilter {
         this.operator = operator;
         this.value = value;
         this.key = this.searchProperty + separator + this.operator;
+        this.searchColumn = searchProperty;
     }
 
     public String getKey() {
@@ -137,6 +139,13 @@ public final class Condition implements SearchFilter {
         this.searchProperty = searchProperty;
     }
 
+    public String getSearchColumn() {
+        return searchColumn;
+    }
+
+    public void setSearchColumn(String searchColumn) {
+        this.searchColumn = searchColumn;
+    }
 
     /**
      * 得到实体属性名

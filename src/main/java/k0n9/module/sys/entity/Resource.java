@@ -1,6 +1,5 @@
 package k0n9.module.sys.entity;
 
-import k0n9.common.annotation.TableAlias;
 import k0n9.common.entity.BaseEntity;
 import k0n9.common.entity.plugin.Tree;
 
@@ -10,7 +9,6 @@ import k0n9.common.entity.plugin.Tree;
  * @author David Kong
  * @version 1.0
  */
-@TableAlias("menu")
 public class Resource extends BaseEntity<Long> implements Tree<Long> {
 
     private static final long serialVersionUID = 3054589666655196403L;

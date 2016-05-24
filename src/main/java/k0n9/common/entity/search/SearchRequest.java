@@ -249,7 +249,7 @@ public final class SearchRequest extends Searchable {
     }
 
     @Override
-    public boolean hashSort() {
+    public boolean hasSort() {
         return this.sort != null && this.sort.iterator().hasNext();
     }
 

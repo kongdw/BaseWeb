@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="k0n9.module.archive.dao.ArchiveMapper">
 
-    <cache/>
+    <!--<cache/>-->
 
     <sql id="selectColumns">
         a.id,
@@ -40,7 +40,6 @@
         LEFT JOIN ams_privacy_level pl on a.privacy_level_id = pl.id
         LEFT JOIN ams_urgent_level ul on a.urgent_level_id = ul.id
     </sql>
-
     <select id="fetch" resultType="Archive">
         SELECT
         <include refid="selectColumns"/>
@@ -49,12 +48,18 @@
         WHERE a.id = #{id}
     </select>
 
-    <select id="findPage" resultType="Archive">
+    <select id="findPage" resultType="Archive" lang="SearchableLanguageDriver">
         SELECT
         <include refid="selectColumns"/>
         FROM ams_archive a
         <include refid="Join"/>
-        ORDER BY id DESC
+        WHERE 1=1
+    </select>
+    <select id="findCount" resultType="java.lang.Long" lang="SearchableLanguageDriver">
+        SELECT COUNT(1) as cnt
+        FROM ams_archive a
+        <include refid="Join"/>
+        WHERE 1=1
     </select>
 
     <select id="findList" resultType="Archive">
