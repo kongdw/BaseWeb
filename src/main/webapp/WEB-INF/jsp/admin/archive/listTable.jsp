@@ -33,7 +33,7 @@
         <span class="lbl"></span>
       </label>
     </th>
-    <th sort="a.type">文件类别</th>
+    <th sort="t.name">文件类别</th>
     <th sort="a.year">年度</th>
     <th>文件字号</th>
     <th sort="a.title">标题</th>

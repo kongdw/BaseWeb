@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<s:useActionBean var="actionBean" beanclass="k0n9.module.archive.web.ArchiveListActionBean" />
 <form class="form-inline search-form">
     <label class="inline">
         <span class="lbl">年度:</span>

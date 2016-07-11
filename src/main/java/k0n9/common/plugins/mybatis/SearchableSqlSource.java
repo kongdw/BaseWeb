@@ -57,6 +57,7 @@ public class SearchableSqlSource implements SqlSource {
             }
         }
         if (searchable.hasSort()) {
+            context.appendSql(" ORDER BY ");
             for (Sort.Order order : searchable.getSort()) {
                 context.appendSql(order.getProperty() + " " + order.getDirection());
             }

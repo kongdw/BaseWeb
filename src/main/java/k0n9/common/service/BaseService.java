@@ -82,9 +82,7 @@ public abstract class BaseService<T extends Persistable, ID extends Serializable
         }
         Long total = getEntityMapper().findCount(searchable);
         total = total == null ? 0l : total;
-        return new PageImpl<T>(getEntityMapper().findPage(searchable),
-                searchable.getPage(),
-                total);
+        return new PageImpl<T>(getEntityMapper().findPage(searchable),searchable.getPage(),total);
     }
 
     public List<T> findList(T entity) {
